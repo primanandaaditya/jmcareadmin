@@ -4,6 +4,8 @@ class Endpoint{
     static faq = "faq/get_faq"
     static faq_delete = "faq/delete"
     static faq_update = "faq/update"
+    static user = "user/get_user"
+    static pekerjaan = "pekerjaan/get_jenis_pekerjaan"
 }
 export default Endpoint;
 

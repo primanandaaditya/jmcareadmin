@@ -158,8 +158,9 @@ export default function FAQ(){
                         <h4 className="card-title">Daftar FAQ</h4>
 
                         {loading ? <Loading/> :
-                            <div className="table-responsive table-responsive table-striped">
-                                <table className="table">
+                            <div>
+
+                                <table className="table table-responsive table-responsive table-striped">
                                     <thead className="text-primary text-center">
                                     <th className="text-center">ID</th>
                                     <th className="text-center">Pertanyaan</th>

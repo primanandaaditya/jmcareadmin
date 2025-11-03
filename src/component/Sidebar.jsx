@@ -52,24 +52,23 @@ export default function Sidebar(){
                                 FAQ
                             </Link>
                         </li>
-                        <li>
-                            <a href="dashboard.html">
-                                <i className="material-icons">dashboard</i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
+
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
-                                <i className="material-icons">image</i>
-                                <p>Pages
+                                <i className="material-icons">widgets</i>
+                                <p>User
                                     <b className="caret"></b>
                                 </p>
                             </a>
                             <div className="collapse" id="pagesExamples">
                                 <ul className="nav">
                                     <li>
-                                        <a href="pages/pricing.html">Pricing</a>
+                                        <Link to={"/user/list"}>
+                                            <i className="material-icons">widgets</i>
+                                            Daftar
+                                        </Link>
                                     </li>
+
                                     <li>
                                         <a href="pages/timeline.html">Timeline</a>
                                     </li>

@@ -10,6 +10,9 @@ import FAQ from "./screen/faq/faq";
 import Rute from "./helper/Rute";
 import Updatefaq from "./screen/faq/updatefaq";
 import InsertFAQ from "./screen/faq/insertfaq";
+import Listuser from "./screen/user/list";
+import Detailuser from "./screen/user/detailuser";
+import Updateuser from "./screen/user/updateuser";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -50,6 +53,15 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/insert_faq/:id"}>
                     <InsertFAQ/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/user/:jenis"}>
+                    <Listuser/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/detailuser/:id"}>
+                    <Detailuser/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/updateuser/:id"}>
+                    <Updateuser/>
                 </PrivateRoute>
             </Switch>
         </Router>
