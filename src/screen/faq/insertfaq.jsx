@@ -8,8 +8,6 @@ import Endpoint from "../../helper/Endpoint";
 import Loading from "../../component/Loading/001/Loading";
 import Rute from "../../helper/Rute";
 
-
-
 export default function InsertFAQ(){
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({});
     let { id } = useParams();

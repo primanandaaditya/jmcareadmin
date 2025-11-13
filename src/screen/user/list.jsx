@@ -136,9 +136,9 @@ export default function Listuser(){
                                 <table className="table table-striped table-responsive">
                                     <thead className="text-primary text-center">
                                     <th className="text-left">ID</th>
-                                    <th className="text-left">Nama user JMCare
+                                    <th className="text-left">Nama di Confins
                                         <hr/>
-                                        Nama confins
+                                        Nama di JMCare
                                     </th>
                                     <th className="text-left">No. KTP</th>
                                     <th className="text-left">Email</th>
