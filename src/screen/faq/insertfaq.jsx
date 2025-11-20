@@ -71,6 +71,7 @@ export default function InsertFAQ(){
                                 value={Konstan.tag_administrator}
                                 type="hidden" {...register("create_by")}
                             />
+
                             <input
                                 value={0}
                                 type="hidden" {...register("id")}

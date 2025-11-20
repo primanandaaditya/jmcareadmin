@@ -60,7 +60,7 @@ ReactDOM.render(
                 <PrivateRoute exact path={"/detailuser/:id"}>
                     <Detailuser/>
                 </PrivateRoute>
-                <PrivateRoute exact path={"/updateuser/:id"}>
+                <PrivateRoute exact path={"/updateuser/:idParam"}>
                     <Updateuser/>
                 </PrivateRoute>
             </Switch>

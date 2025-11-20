@@ -25,14 +25,12 @@ export default function Listuser(){
         issearch.current = ""
         getData()
     }
-
     const tampil = (ipage) => {
         ppage.current = ipage
         setKeyword("")
         issearch.current = ""
         getData()
     }
-
     const doSearch = () => {
         if (keyword !== ''){
             issearch.current = "1"
@@ -42,7 +40,6 @@ export default function Listuser(){
         ppage.current = 1
         getData()
     }
-
     async function getData  () {
         let param = {
             "issearch": issearch.current,
@@ -94,7 +91,6 @@ export default function Listuser(){
                         <i className="material-icons">add</i>
                         <div className="ripple-container"></div>
                     </Link>
-
                 </div>
 
                 <div className="card">
@@ -160,7 +156,7 @@ export default function Listuser(){
                                                       className="btn btn-info btn-simple">
                                                     <i className="material-icons">info</i>
                                                 </Link>
-                                                <Link to={"/detailuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                <Link to={"/updateuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
                                                       type="button" rel="tooltip"
                                                       className="btn btn-success btn-simple">
                                                     <i className="material-icons">edit</i>

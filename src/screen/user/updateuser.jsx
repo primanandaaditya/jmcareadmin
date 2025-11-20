@@ -6,13 +6,12 @@ import Endpoint from "../../helper/Endpoint";
 import Loading from "../../component/Loading/001/Loading";
 import Rute from "../../helper/Rute";
 import {Link, useHistory, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-
+import {useEffect, useRef, useState} from "react";
 
 export default function Updateuser(){
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({});
-    let { id } = useParams();
+    let { idParam } = useParams();
     const [loading,setLoading] = useState(false)
     const [loadpekerjaan,setLoadpekerjaan] = useState({})
     const [datapekerjaan,setDatapekerjaan] = useState([])
@@ -32,22 +31,47 @@ export default function Updateuser(){
     const [loadnikah,setLoadnikah] = useState(false)
     const [datanikah,setDatanikah] = useState([])
     const history = useHistory();
+    const jso = useRef('')
+    const idLempar = useRef('')
 
     useEffect( () => {
-        console.clear()
-        console.log(id)
         getPekerjaan()
         getPropinsi()
         getPendidikanterakhir()
         getStatusPernikahan()
-        if (id !== Konstan.tag_insert){
-            // console.log(atob(id))
-            // let jso = JSON.parse(atob(id));
-            // setValue("pertanyaan", jso.pertanyaan)
-            // setValue("jawaban", jso.jawaban)
-            // setValue("id", jso.id)
-            // setValue("isInsert","0")
+        console.log("up " + idParam)
+        if (idParam !== Konstan.tag_insert){
+            let jso = JSON.parse(atob(idParam));
+            console.log("login_user_id " + jso.login_user_id)
+            setValue("login_user_id", jso.login_user_id)
+            idLempar.current = jso.id
+            setValue("nama", jso.nama)
+            setValue("alamat", jso.alamat)
+            setValue("no_ktp", jso.no_ktp)
+            setValue("no_hp", jso.no_hp)
+            setValue("email", jso.email)
+            setValue("alamat_rt", jso.alamat_rt)
+            setValue("alamat_rw", jso.alamat_rw)
+            setValue("tempat", jso.tempat)
+            setValue("jeniskelamin", (!jso.jeniskelamin  ? '-1' : jso.jeniskelamin ))
+            setValue("pekerjaan", !jso.pekerjaan ? '-1' : jso.pekerjaan)
+            setValue("grade", (!jso.grade ? '-1' : jso.grade) )
+            setValue("jenisdebitur", jso.jenisdebitur.substring(0,1))
+            setValue("npwp", jso.npwp)
+            setValue("nama_ibu_kandung", jso.nama_ibu_kandung)
+            setValue("pendidikan_terakhir", !jso.pendidikan_terakhir ? '-1' : jso.pendidikan_terakhir)
+            setValue("status_pernikahan", !jso.status_pernikahan ? '-1' : jso.status_pernikahan)
+            setValue("kewarganegaraan", !jso.kewarganegaraan ? '-1' : jso.kewarganegaraan)
+            setValue("jumlah_tanggungan", jso.jumlah_tanggungan)
+            setValue("alamat_kantor", jso.alamat_kantor)
+            setValue("telp_kantor", jso.telp_kantor)
+            setValue("setuju_penawaran", !jso.setuju_penawaran ? '-1' : jso.setuju_penawaran)
+            setValue("is_active", !jso.is_active ? '-1' : jso.is_active)
+            setValue("tgllahir", jso.tgllahir)
         }else{
+            setValue("login_user_id",0)
+            idLempar.current = 0
+            // console.log(atob(id))
             // setValue("id", 0)
             // setValue("isInsert","1")
         }
@@ -83,6 +107,16 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatapekerjaan(res.data.payload)
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.pekerjaan !== null){
+                            if (jso.pekerjaan === '' ){
+                                setValue("pekerjaan", "-1")
+                            }else{
+                                setValue("pekerjaan", jso.pekerjaan)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -106,6 +140,16 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatapendidikan(res.data.payload)
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.pendidikan_terakhir !== null){
+                            if (jso.pendidikan_terakhir === '' ){
+                                setValue("pendidikan_terakhir", "-1")
+                            }else{
+                                setValue("pendidikan_terakhir", jso.pendidikan_terakhir)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -129,6 +173,16 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatanikah(res.data.payload)
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.status_pernikahan !== null){
+                            if (jso.status_pernikahan === '' ){
+                                setValue("status_pernikahan", "-1")
+                            }else{
+                                setValue("status_pernikahan", jso.status_pernikahan)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -141,7 +195,6 @@ export default function Updateuser(){
     }
     async function getPropinsi() {
         setLoadpropinsi(true)
-
         const param = {
             "jenis":"propinsi",
             "id_master":0
@@ -149,10 +202,22 @@ export default function Updateuser(){
         axios.post(Endpoint.BASE_URL + Endpoint.wilayah, param)
             .then(res => {
                 setLoadpropinsi(false)
-
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatapropinsi(res.data.payload)
+                    //ini mode edit, sesudah hit api propinsi sukses
+                    //maka akan cek parameter yang dilempar
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.provinsi !== null){
+                            if (isNaN(jso.provinsi) || jso.provinsi === '' ){
+                                setValue("provinsi", "-1")
+                            }else{
+                                setValue("provinsi", jso.provinsi)
+                                getKabupaten(jso.provinsi)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -179,6 +244,19 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatakabupaten(res.data.payload)
+                    //ini mode edit
+                    console.log('assign kabupaten')
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.kabupaten !== null){
+                            if (isNaN(jso.kabupaten) || jso.kabupaten === ''){
+                                setValue("kabupaten", "-1")
+                            }else{
+                                setValue("kabupaten", jso.kabupaten)
+                                getKecamatan(jso.kabupaten)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -204,6 +282,17 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatakecamatan(res.data.payload)
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.kecamatan !== null){
+                            if (isNaN(jso.kecamatan) || jso.kecamatan === ''){
+                                setValue("kecamatan", "-1")
+                            }else{
+                                setValue("kecamatan", jso.kecamatan)
+                                getKelurahan(jso.kecamatan)
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -228,6 +317,19 @@ export default function Updateuser(){
                 console.log(res.data)
                 if (res.data.isSuccess === true) {
                     setDatakelurahan(res.data.payload)
+                    if (idParam !== Konstan.tag_insert){
+                        let jso = JSON.parse(atob(idParam));
+                        if (jso.kelurahan !== null){
+                            if (jso.kelurahan !== null){
+                                if (isNaN(jso.kelurahan) || jso.kelurahan === ''){
+                                    setValue("kelurahan", "-1")
+                                }else{
+                                    setValue("kelurahan", jso.kelurahan)
+                                    getKodepos(jso.kelurahan)
+                                }
+                            }
+                        }
+                    }
                 }else{
                     // eslint-disable-next-line no-undef
                     errorToast(res.data.message)
@@ -283,7 +385,7 @@ export default function Updateuser(){
     return (
         <div>
             {loading ? <Loading/> :
-                <ContentWrapper title={id === 'insert' ? 'Tambah User' : 'Edit User'}>
+                <ContentWrapper title={idParam === 'insert' ? 'Tambah User' : 'Edit User'}>
                     <br/>
                     <br/>
                     <div className="navbar-form navbar-right" role="search">
@@ -294,7 +396,7 @@ export default function Updateuser(){
                             <i className="material-icons">apps</i>
                         </div>
                         <div className="card-content">
-                            <h4 className="card-title">{id === Konstan.tag_insert ? 'Tambah User' : 'Update User'}</h4>
+                            <h4 className="card-title">{idParam === Konstan.tag_insert ? 'Tambah User' : 'Update User'}</h4>
                             <form onSubmit={handleSubmit(doUpdate)}>
                                 <input
                                     value={Konstan.tag_administrator}
@@ -302,13 +404,13 @@ export default function Updateuser(){
                                 />
                                 <input
                                     value={0}
-                                    type="hidden" {...register("id")}
+                                    type="hidden" {...register("login_user_id")
+                                }
                                 />
                                 <input
-                                    value={id === "insert" ? "1" : "0"}
+                                    value={idParam === "insert" ? "1" : "0"}
                                     type="hidden" {...register("isInsert")}
                                 />
-
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="form-group label-floating">
@@ -345,7 +447,6 @@ export default function Updateuser(){
                                     </div>
 
                                 </div>
-
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="form-group label-floating">
@@ -372,7 +473,7 @@ export default function Updateuser(){
                                         <div className="form-group label-floating">
                                             <label className="control-label">RT
                                             </label>
-                                            <input {...register("alamat_rt", {required: true})}
+                                            <input {...register("alamat_rt")}
                                                    className="form-control"
                                                    type="number"/>
                                         </div>
@@ -387,7 +488,6 @@ export default function Updateuser(){
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="form-group label-floating">
@@ -410,7 +510,6 @@ export default function Updateuser(){
                                             </label>
                                             {loadkabupaten ? <div>Loading...</div> :
                                                 <select
-
                                                     onChangeCapture={(e) => handleKabupaten(e)}
                                                     {...register("kabupaten")} className="form-control">
                                                     <option value="-1" disabled selected>Pilih salah satu</option>
@@ -437,7 +536,6 @@ export default function Updateuser(){
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="form-group label-floating">
@@ -468,7 +566,6 @@ export default function Updateuser(){
                                     </div>
 
                                 </div>
-
                                 <div className="row">
 
                                     <div className="col-md-4">
@@ -497,7 +594,7 @@ export default function Updateuser(){
                                             <select
                                                 className="selectpicker"
                                                 {...register("jeniskelamin")} className="form-control">
-                                                <option disabled selected>Pilih salah satu</option>
+                                                <option value="-1" disabled selected>Pilih salah satu</option>
                                                 <option value="M">Laki-laki</option>
                                                 <option value="F">Perempuan</option>
                                             </select>
@@ -513,7 +610,7 @@ export default function Updateuser(){
                                                 <select
                                                     className="selectpicker"
                                                     {...register("pekerjaan")} className="form-control">
-                                                    <option disabled selected>Pilih salah satu</option>
+                                                    <option value="-1" disabled selected>Pilih salah satu</option>
                                                     {datapekerjaan.map(x => (
                                                         <option value={x.nama}>{x.nama}</option>
                                                     ))}
@@ -526,7 +623,7 @@ export default function Updateuser(){
                                             </label>
                                             <select
                                                 {...register("grade")} className="form-control">
-                                                <option disabled selected>Pilih salah satu</option>
+                                                <option value="-1" disabled selected>Pilih salah satu</option>
                                                 <option value="A">A</option>
                                                 <option value="B">B</option>
                                                 <option value="C">C</option>
@@ -575,7 +672,7 @@ export default function Updateuser(){
                                                 <select
                                                     {...register("pendidikan_terakhir")}
                                                     className="form-control">
-                                                    <option disabled selected>Pilih salah satu</option>
+                                                    <option value="-1" disabled selected>Pilih salah satu</option>
                                                     {datapendidikan.map(x => (
                                                         <option value={x.id}>{x.name}</option>
                                                     ))}
@@ -592,7 +689,7 @@ export default function Updateuser(){
                                                 <select
                                                     {...register("status_pernikahan")}
                                                     className="form-control">
-                                                    <option disabled selected>Pilih salah satu</option>
+                                                    <option value="-1" disabled selected>Pilih salah satu</option>
                                                     {datanikah.map(x => (
                                                         <option value={x.id}>{x.name}</option>
                                                     ))}
@@ -604,7 +701,7 @@ export default function Updateuser(){
                                             <label className="control-label">Kewarganegaraan
                                             </label>
                                             <select {...register("kewarganegaraan")} className="form-control">
-                                                <option disabled selected>Pilih salah satu</option>
+                                                <option value="-1" disabled selected>Pilih salah satu</option>
                                                 <option value="WNI">Warga Negara Indonesia (WNI)</option>
                                                 <option value="WNA">Warga Negara Asing (WNA)</option>
                                             </select>
@@ -646,9 +743,9 @@ export default function Updateuser(){
                                             <label className="control-label">Menyetujui penawaran
                                             </label>
                                             <select {...register("setuju_penawaran")} className="form-control">
-                                                <option disabled selected>Pilih salah satu</option>
+                                                <option value="-1" disabled selected>Pilih salah satu</option>
                                                 <option value="1">Ya</option>
-                                                <option value="2">Tidak</option>
+                                                <option value="0">Tidak</option>
                                             </select>
                                         </div>
                                     </div>
@@ -657,14 +754,13 @@ export default function Updateuser(){
                                             <label className="control-label">Bisa login JMCare
                                             </label>
                                             <select {...register("is_active")} className="form-control">
-                                                <option disabled selected>Pilih salah satu</option>
+                                                <option value="-1" disabled selected>Pilih salah satu</option>
                                                 <option value="1">Ya</option>
-                                                <option value="2">Tidak</option>
+                                                <option value="0">Tidak</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="text-center">
                                     <Link to={"/user/list"} className="btn btn-primary btn-simple">Kembali</Link>
                                     <button
@@ -673,7 +769,6 @@ export default function Updateuser(){
                                     </button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </ContentWrapper>}
