@@ -11,6 +11,7 @@ class Konstan{
     static tag_administrator = "ADMINISTRATOR"
     static tag_insert = "insert"
     static tag_wajib_diisi = "Data mandatory wajib diisi"
+    static tag_timeout = 180000
 
     static PaginationOption = {
         page: 1,

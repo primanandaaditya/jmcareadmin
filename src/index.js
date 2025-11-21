@@ -13,6 +13,7 @@ import InsertFAQ from "./screen/faq/insertfaq";
 import Listuser from "./screen/user/list";
 import Detailuser from "./screen/user/detailuser";
 import Updateuser from "./screen/user/updateuser";
+import Gantipassword from "./screen/user/gantipassword";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -62,6 +63,9 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/updateuser/:idParam"}>
                     <Updateuser/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/gantipassword/:id"}>
+                    <Gantipassword/>
                 </PrivateRoute>
             </Switch>
         </Router>

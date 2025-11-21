@@ -68,10 +68,13 @@ export default function Sidebar(){
                                             Daftar
                                         </Link>
                                     </li>
-
                                     <li>
-                                        <a href="pages/timeline.html">Timeline</a>
+                                        <Link to={"/user/gantipassword"}>
+                                            <i className="material-icons">widgets</i>
+                                            Ganti password
+                                        </Link>
                                     </li>
+
                                     <li>
                                         <a href="pages/login.html">Login Page</a>
                                     </li>

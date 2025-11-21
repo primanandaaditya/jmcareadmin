@@ -48,7 +48,7 @@ export default function Listuser(){
         }
         console.log(JSON.stringify(param))
         setLoading(true)
-        axios.post(Endpoint.BASE_URL + Endpoint.user, param,{timeout : 180000})
+        axios.post(Endpoint.BASE_URL + Endpoint.user, param,{timeout : Konstan.tag_timeout})
             .then(res => {
                 setLoading(false)
                 console.log(res.data)
@@ -63,6 +63,35 @@ export default function Listuser(){
             errorToast(error)
             setLoading(false)
         })
+    }
+    async function deleteUser(login_user_id) {
+        console.clear()
+        console.log(login_user_id)
+        // eslint-disable-next-line no-undef
+        if  (window.confirm('Hapus data ini?')){
+            let param = {
+                "id":login_user_id
+            }
+            console.log(JSON.stringify(param))
+            setLoading(true)
+            axios.post(Endpoint.BASE_URL + Endpoint.user_delete, param,{timeout : Konstan.tag_timeout})
+                .then(res => {
+                    setLoading(false)
+                    console.log(res.data)
+                    if (res.data.isSuccess === true) {
+                        // eslint-disable-next-line no-undef
+                        suksesToast(res.data.payload)
+                        tampil(1)
+                    }else{
+                        // eslint-disable-next-line no-undef
+                        errorToast(res.data.message)
+                    }
+                }).catch(function (error) {
+                // eslint-disable-next-line no-undef
+                errorToast(error)
+                setLoading(false)
+            })
+        }
     }
 
     useEffect( () => {
@@ -132,6 +161,7 @@ export default function Listuser(){
                                 <table className="table table-striped table-responsive">
                                     <thead className="text-primary text-center">
                                     <th className="text-left">ID</th>
+                                    <th className="text-left">Status</th>
                                     <th className="text-left">Nama di Confins
                                         <hr/>
                                         Nama di JMCare
@@ -145,28 +175,52 @@ export default function Listuser(){
                                     {data.map(x => (
                                         <tr className="text-left">
                                             <td>{x.login_user_id}</td>
+                                            <td>{x.is_active === '1' ?
+                                                <i className="material-icons text-success">favorite</i> :
+                                                <i className="material-icons text-danger">favorite</i>}
+                                            </td>
                                             <td>{(x.confins_nama === null || x.confins_nama === "") ? "-" : x.confins_nama}<br/>{(x.nama === null || x.nama === "") ? "-" : x.nama}
                                             </td>
+
                                             <td>{x.no_ktp}</td>
                                             <td>{x.email}</td>
                                             <td>{x.no_hp}</td>
+
                                             <td className="td-actions text-center">
-                                                <Link to={"/detailuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
-                                                      type="button" rel="tooltip"
-                                                      className="btn btn-info btn-simple">
-                                                    <i className="material-icons">info</i>
-                                                </Link>
-                                                <Link to={"/updateuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
-                                                      type="button" rel="tooltip"
-                                                      className="btn btn-success btn-simple">
-                                                    <i className="material-icons">edit</i>
-                                                </Link>
-                                                <button
-                                                    // onClick={() => hapus(x.id)}
-                                                    type="button" rel="tooltip"
-                                                    className="btn btn-danger btn-simple">
-                                                    <i className="material-icons">close</i>
-                                                </button>
+                                                { jenis === "list" ?
+                                                    <div>
+                                                        <Link
+                                                            to={"/detailuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            type="button" rel="tooltip"
+                                                            className="btn btn-info btn-simple">
+                                                            <i className="material-icons">info</i>
+                                                        </Link>
+                                                        <Link
+                                                            to={"/updateuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            type="button" rel="tooltip"
+                                                            className="btn btn-success btn-simple">
+                                                            <i className="material-icons">edit</i>
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => deleteUser(x.login_user_id)}
+                                                            type="button" rel="tooltip"
+                                                            className="btn btn-danger btn-simple">
+                                                            <i className="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    : <div></div>}
+
+                                                { jenis === 'gantipassword'
+                                                    ? <div>
+                                                        <Link
+                                                            to={"/gantipassword/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            type="button" rel="tooltip"
+                                                            className="btn btn-default">
+                                                            Ganti password
+                                                        </Link>
+                                                    </div>
+                                                    : <div></div>
+                                                }
                                             </td>
                                         </tr>
                                     ))}

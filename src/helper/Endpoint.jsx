@@ -10,6 +10,8 @@ class Endpoint{
     static pendidikan = "moviewlistparam/get_moviewlistparam"
     static getviewlistwo = "Moviewlistparam/getviewlistWO"
     static user_update = "user/update"
+    static user_delete = "user/delete"
+    static user_gantipassword = "user/change_password"
 }
 export default Endpoint;
 
