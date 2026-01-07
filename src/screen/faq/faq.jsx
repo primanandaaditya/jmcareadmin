@@ -6,6 +6,7 @@ import Loading from "../../component/Loading/001/Loading";
 import Konstan from "../../helper/Konstan";
 import Rute from "../../helper/Rute";
 import {Link} from "react-router-dom";
+import base64 from "react-native-base64";
 
 export default function FAQ(){
     const [loading, setLoading] = useState(false);
@@ -156,10 +157,8 @@ export default function FAQ(){
 
                     <div className="card-content">
                         <h4 className="card-title">Daftar FAQ</h4>
-
                         {loading ? <Loading/> :
                             <div>
-
                                 <table className="table table-responsive table-responsive table-striped">
                                     <thead className="text-primary text-center">
                                     <th className="text-center">ID</th>
@@ -176,15 +175,19 @@ export default function FAQ(){
                                             <td>{x.jawaban.substring(0, 10) + "..."}</td>
                                             <td className="text-center">{x.create_date}</td>
                                             <td className="td-actions text-center">
-                                                <Link to={"/insert_faq/" + btoa(JSON.stringify(x) )}
-                                                        type="button" rel="tooltip"
-                                                        className="btn btn-success btn-simple">
+                                                {/*<Link to={"/insert_faq/" + base64.encode(JSON.stringify(x) )}*/}
+                                                {/*        type="button" rel="tooltip"*/}
+                                                {/*        className="btn btn-success btn-simple">*/}
+                                                {/*    <i className="material-icons">edit</i>*/}
+                                                {/*</Link>*/}
+                                                <Link to={"/insert_faq/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-success btn-simple">
                                                     <i className="material-icons">edit</i>
                                                 </Link>
                                                 <button
                                                     onClick={() => hapus(x.id)}
                                                     type="button" rel="tooltip"
-
                                                     className="btn btn-danger btn-simple">
                                                     <i className="material-icons">close</i>
                                                 </button>

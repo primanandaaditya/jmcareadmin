@@ -14,6 +14,10 @@ import Listuser from "./screen/user/list";
 import Detailuser from "./screen/user/detailuser";
 import Updateuser from "./screen/user/updateuser";
 import Gantipassword from "./screen/user/gantipassword";
+import Kontrak from "./screen/user/kontrak";
+import Agreementcard from "./screen/user/agreementcard";
+import WebsiteArtikeList from "./screen/website/artikel/list";
+import UpsertWebsiteArtikel from "./screen/website/artikel/upsert";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -66,6 +70,18 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/gantipassword/:id"}>
                     <Gantipassword/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/kontrak/:jenis/:idParam"}>
+                    <Kontrak/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/agreementcard/:idParam"}>
+                    <Agreementcard/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/website_artikel"}>
+                    <WebsiteArtikeList/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/update_website_artikel/:id"}>
+                    <UpsertWebsiteArtikel/>
                 </PrivateRoute>
             </Switch>
         </Router>

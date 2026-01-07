@@ -16,11 +16,35 @@ export default function Detailuser(){
     const [loading,setLoading] = useState(false)
     const history = useHistory();
     const data = useRef({})
+    const [detail,setDetail] = useState({})
+
+    async function getDetailUser  () {
+        let param = {
+            "id": id
+        }
+        setLoading(true)
+        axios.post(Endpoint.BASE_URL + Endpoint.user_detail, param)
+            .then(res => {
+                setLoading(false)
+                console.log(res.data)
+                if (res.data.isSuccess === true) {
+                    // setData(res.data.payload)
+                    data.current = res.data.payload
+                    setDetail(res.data.payload)
+                }else{
+                    alert(res.data.message)
+                }
+            }).catch(function (error) {
+            alert(error)
+            setLoading(false)
+        })
+    }
 
     useEffect( () => {
         console.clear()
-        console.log(atob(id))
-        data.current = JSON.parse(atob(id));
+        getDetailUser()
+        // console.log(atob(id))
+        // data.current = JSON.parse(atob(id));
     },[])
 
     return(
@@ -48,6 +72,7 @@ export default function Detailuser(){
                         </div>
                         <br/>
 
+                        { loading === true ? <Loading/> :
                         <div className="row">
                             <div className="col-lg-4">
                                 <div className="table-responsive">
@@ -210,7 +235,7 @@ export default function Detailuser(){
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
 
 
                     </div>

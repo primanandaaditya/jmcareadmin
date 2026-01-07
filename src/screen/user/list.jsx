@@ -6,7 +6,7 @@ import Loading from "../../component/Loading/001/Loading";
 import Konstan from "../../helper/Konstan";
 import Rute from "../../helper/Rute";
 import {Link, useParams} from "react-router-dom";
-
+import base64 from "react-native-base64";
 
 export default function Listuser(){
 
@@ -189,14 +189,20 @@ export default function Listuser(){
                                             <td className="td-actions text-center">
                                                 { jenis === "list" ?
                                                     <div>
+                                                        {/*<Link*/}
+                                                        {/*    to={"/detailuser/" + base64.encode(JSON.stringify(x))}*/}
+                                                        {/*    type="button" rel="tooltip"*/}
+                                                        {/*    className="btn btn-info btn-simple">*/}
+                                                        {/*    <i className="material-icons">info</i>*/}
+                                                        {/*</Link>*/}
                                                         <Link
-                                                            to={"/detailuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            to={"/detailuser/" + x.login_user_id}
                                                             type="button" rel="tooltip"
                                                             className="btn btn-info btn-simple">
                                                             <i className="material-icons">info</i>
                                                         </Link>
                                                         <Link
-                                                            to={"/updateuser/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            to={"/updateuser/" + base64.encode(JSON.stringify(x))}
                                                             type="button" rel="tooltip"
                                                             className="btn btn-success btn-simple">
                                                             <i className="material-icons">edit</i>
@@ -209,11 +215,10 @@ export default function Listuser(){
                                                         </button>
                                                     </div>
                                                     : <div></div>}
-
                                                 { jenis === 'gantipassword'
                                                     ? <div>
                                                         <Link
-                                                            to={"/gantipassword/" + btoa(unescape(encodeURIComponent(JSON.stringify(x))))}
+                                                            to={"/gantipassword/" + base64.encode(JSON.stringify(x))}
                                                             type="button" rel="tooltip"
                                                             className="btn btn-default">
                                                             Ganti password
@@ -221,6 +226,55 @@ export default function Listuser(){
                                                     </div>
                                                     : <div></div>
                                                 }
+                                                { jenis === 'kontrak'
+                                                    ? <div>
+                                                        { x.jenisdebitur === '1' ?
+                                                        <Link
+                                                            to={"/kontrak/list/" + base64.encode(JSON.stringify(x))}
+                                                            type="button" rel="tooltip"
+                                                            className="btn btn-default">
+                                                            Kontrak
+                                                        </Link> : <b><p className="text-info">Bukan debitur</p></b> }
+                                                    </div>
+                                                    : <div></div>
+                                                }
+                                                { jenis === 'agreementcard'
+                                                    ? <div>
+                                                        { x.jenisdebitur === '1' ?
+                                                            <Link
+                                                                to={"/kontrak/agreementcard/" + base64.encode(JSON.stringify(x))}
+                                                                type="button" rel="tooltip"
+                                                                className="btn btn-default">
+                                                                Pilih kontrak
+                                                            </Link> : <b><p className="text-info">Bukan debitur</p></b> }
+                                                    </div>
+                                                    : <div></div>
+                                                }
+                                                { jenis === 'epolis'
+                                                    ? <div>
+                                                        { x.jenisdebitur === '1' ?
+                                                            <Link
+                                                                to={"/kontrak/epolis/" + base64.encode(JSON.stringify(x))}
+                                                                type="button" rel="tooltip"
+                                                                className="btn btn-default">
+                                                                Pilih kontrak
+                                                            </Link> : <b><p className="text-info">Bukan debitur</p></b> }
+                                                    </div>
+                                                    : <div></div>
+                                                }
+                                                { jenis === 'econtract'
+                                                    ? <div>
+                                                        { x.jenisdebitur === '1' ?
+                                                            <Link
+                                                                to={"/kontrak/econtract/" + base64.encode(JSON.stringify(x))}
+                                                                type="button" rel="tooltip"
+                                                                className="btn btn-default">
+                                                                Pilih kontrak
+                                                            </Link> : <b><p className="text-info">Bukan debitur</p></b> }
+                                                    </div>
+                                                    : <div></div>
+                                                }
+
                                             </td>
                                         </tr>
                                     ))}

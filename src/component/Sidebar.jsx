@@ -2,6 +2,8 @@ import {Link} from "react-router-dom";
 import Rute from "../helper/Rute";
 import {useHistory} from "react-router-dom";
 import Konstan from "../helper/Konstan";
+import avatar from "../asset/gambar/avatar.png"
+import sidebar from "../asset/gambar/sidebar.jpg"
 
 export default function Sidebar(){
 
@@ -15,7 +17,7 @@ export default function Sidebar(){
     return(
         <div>
             <div className="sidebar" data-active-color="rose" data-background-color="black"
-                 data-image="../assets/img/sidebar-1.jpg">
+                 data-image={sidebar}>
                 <div className="logo">
                     <a href="http://www.creative-tim.com/" className="simple-text">
                         JMCARE ADMIN
@@ -29,7 +31,7 @@ export default function Sidebar(){
                 <div className="sidebar-wrapper">
                     <div className="user">
                         <div className="photo">
-                            <img src="../assets/img/default-avatar.png"/>
+                            <img src={avatar}/>
                         </div>
                         <div className="info">
                             <a data-toggle="collapse" href="#collapseExample" className="collapsed">
@@ -52,7 +54,6 @@ export default function Sidebar(){
                                 FAQ
                             </Link>
                         </li>
-
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
                                 <i className="material-icons">widgets</i>
@@ -74,18 +75,29 @@ export default function Sidebar(){
                                             Ganti password
                                         </Link>
                                     </li>
-
                                     <li>
-                                        <a href="pages/login.html">Login Page</a>
+                                        <Link to={"/user/kontrak"}>
+                                            <i className="material-icons">widgets</i>
+                                            Kontrak
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="pages/register.html">Register Page</a>
+                                        <Link to={"/user/agreementcard"}>
+                                            <i className="material-icons">widgets</i>
+                                            Agreement Card
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="pages/lock.html">Lock Screen Page</a>
+                                        <Link to={"/user/epolis"}>
+                                            <i className="material-icons">widgets</i>
+                                            ePolis
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="pages/user.html">User Profile</a>
+                                        <Link to={"/user/econtract"}>
+                                            <i className="material-icons">widgets</i>
+                                            eContract
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -93,14 +105,17 @@ export default function Sidebar(){
                         <li>
                             <a data-toggle="collapse" href="#componentsExamples">
                                 <i className="material-icons">apps</i>
-                                <p>Components
+                                <p>Website
                                     <b className="caret"></b>
                                 </p>
                             </a>
                             <div className="collapse" id="componentsExamples">
                                 <ul className="nav">
                                     <li>
-                                        <a href="components/buttons.html">Buttons</a>
+                                        <Link to={"/website_artikel"}>
+                                            <i className="material-icons">widgets</i>
+                                            Artikel
+                                        </Link>
                                     </li>
                                     <li>
                                         <a href="components/grid.html">Grid System</a>

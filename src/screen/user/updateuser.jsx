@@ -405,7 +405,7 @@ export default function Updateuser(){
                                 <input
                                     value={0}
                                     type="hidden" {...register("login_user_id")
-                                }
+                                    }
                                 />
                                 <input
                                     value={idParam === "insert" ? "1" : "0"}
@@ -731,7 +731,7 @@ export default function Updateuser(){
                                     </div>
                                     <div className="col-md-3">
                                         <div className="form-group label-floating">
-                                        <label className="control-label">No. telepon kantor
+                                            <label className="control-label">No. telepon kantor
                                             </label>
                                             <input {...register("telp_kantor")}
                                                    className="form-control"
