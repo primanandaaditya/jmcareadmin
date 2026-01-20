@@ -21,6 +21,12 @@ class Endpoint{
     static banner_get_website_artikel = "banner/get_website_artikel"
     static banner_delete_website_artikel = "banner/delete_website_artikel"
     static banner_upsert_website_artikel = "banner/upsert_website_artikel"
+    static banner_get_website_banner = "banner/get_website_banner"
+    static banner_upsert_website_banner = "banner/upsert_website_banner"
+    static banner_delete_website_banner = "banner/delete_website_banner"
+    static banner_get_website_produk = "banner/get_website_produk"
+    static banner_upsert_website_produk = "banner/upsert_website_produk"
+    static banner_delete_website_produk = "banner/delete_website_produk"
 }
 export default Endpoint;
 

@@ -117,9 +117,7 @@ export default function WebsiteArtikeList(){
                 setLoading(false)
             })
         }
-
     }
-
 
     return (
             <div>
@@ -139,7 +137,7 @@ export default function WebsiteArtikeList(){
                             <i className="material-icons">search</i>
                             <div className="ripple-container"></div>
                         </button>
-                        <Link className="btn btn-round btn-just-icon" to={"/update_website_artikel/insert"}>
+                        <Link className="btn btn-round btn-just-icon" to={"/update_website_artikel/0/insert"}>
                             <i className="material-icons">add</i>
                             <div className="ripple-container"></div>
                         </Link>
@@ -153,19 +151,19 @@ export default function WebsiteArtikeList(){
                         <div className="card-content">
                             <h4 className="card-title">Website Artikel</h4>
                             {loading ? <Loading/> :
-                                <div className="table-responsive">
-                                    <table className="table table-responsive table-striped">
+                                <div className="table-responsive table-bordered">
+                                    <table className="table table-responsive table-bordered table-striped">
                                         <thead className="text-primary text-center">
                                         <th className="text-center">ID</th>
-                                        <th className="text-center">Title (EN)</th>
-                                        <th className="text-center">Title (ID)</th>
-                                        <th className="text-center">Subtitle (EN)</th>
-                                        <th className="text-center">Subtitle (ID)</th>
-                                        <th className="text-center">Description (EN)</th>
-                                        <th className="text-center">Description (ID)</th>
+                                        <th className="text-center">Judul (EN)</th>
+                                        <th className="text-center">Judul (ID)</th>
+                                        <th className="text-center">Subjudul (EN)</th>
+                                        <th className="text-center">Subjudul (ID)</th>
+                                        <th className="text-center">Deskripsi (EN)</th>
+                                        <th className="text-center">Deskripsi (ID)</th>
                                         <th className="text-center">Gambar</th>
-                                        <th className="text-center">News Date</th>
-                                        <th className="text-center">Program ID</th>
+                                        <th className="text-center">Tanggal Berita</th>
+                                        <th className="text-center">ID Program</th>
                                         <th className="text-center">Tipe</th>
                                         <th className="text-center">Aktif</th>
                                         <th className="td-actions text-center">Aksi</th>
@@ -187,7 +185,7 @@ export default function WebsiteArtikeList(){
                                                 <td>{x.news_date}</td>
                                                 <td>{x.program_id}</td>
                                                 <td>{x.type}</td>
-                                                <td>
+                                                <td className="text-center">
                                                     <input
                                                         type="checkbox"
                                                         checked={x.is_active === '1'}
@@ -195,9 +193,10 @@ export default function WebsiteArtikeList(){
                                                     />
                                                 </td>
                                                 <td className="td-actions text-center">
-                                                    <Link to={"/update_website_artikel/" + base64.encode(JSON.stringify(x))}
-                                                          type="button" rel="tooltip"
-                                                          className="btn btn-success btn-simple">
+                                                    <Link
+                                                        to={"/update_website_artikel/" + x.id + "/" + base64.encode(JSON.stringify(x))}
+                                                        type="button" rel="tooltip"
+                                                        className="btn btn-success btn-simple">
                                                         <i className="material-icons">edit</i>
                                                     </Link>
                                                     <button
@@ -216,5 +215,5 @@ export default function WebsiteArtikeList(){
                     </div>
                 </ContentWrapper>
             </div>
-        )
+    )
 }

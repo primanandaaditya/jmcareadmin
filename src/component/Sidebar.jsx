@@ -118,23 +118,19 @@ export default function Sidebar(){
                                         </Link>
                                     </li>
                                     <li>
-                                        <a href="components/grid.html">Grid System</a>
+                                        <Link to={"/website_banner"}>
+                                            <i className="material-icons">widgets</i>
+                                            Banner
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="components/panels.html">Panels</a>
+                                        <Link to={"/website_produk"}>
+                                            <i className="material-icons">widgets</i>
+                                            Produk
+                                        </Link>
                                     </li>
-                                    <li>
-                                        <a href="components/sweet-alert.html">Sweet Alert</a>
-                                    </li>
-                                    <li>
-                                        <a href="components/notifications.html">Notifications</a>
-                                    </li>
-                                    <li>
-                                        <a href="components/icons.html">Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="components/typography.html">Typography</a>
-                                    </li>
+
+
                                 </ul>
                             </div>
                         </li>

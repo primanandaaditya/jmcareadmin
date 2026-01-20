@@ -18,6 +18,10 @@ import Kontrak from "./screen/user/kontrak";
 import Agreementcard from "./screen/user/agreementcard";
 import WebsiteArtikeList from "./screen/website/artikel/list";
 import UpsertWebsiteArtikel from "./screen/website/artikel/upsert";
+import WebsiteBannerList from "./screen/website/banner/list";
+import UpsertWebsiteBanner from "./screen/website/banner/upsert";
+import WebsiteProduk from "./screen/website/produk/list";
+import UpsertWebsiteProduk from "./screen/website/produk/upsert";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -80,8 +84,20 @@ ReactDOM.render(
                 <PrivateRoute exact path={"/website_artikel"}>
                     <WebsiteArtikeList/>
                 </PrivateRoute>
-                <PrivateRoute exact path={"/update_website_artikel/:id"}>
+                <PrivateRoute exact path={"/update_website_artikel/:susu/:id"}>
                     <UpsertWebsiteArtikel/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/website_banner"}>
+                    <WebsiteBannerList/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/update_website_banner/:id"}>
+                    <UpsertWebsiteBanner/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/website_produk"}>
+                    <WebsiteProduk/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/update_website_produk/:susu/:idParam"}>
+                    <UpsertWebsiteProduk/>
                 </PrivateRoute>
             </Switch>
         </Router>
