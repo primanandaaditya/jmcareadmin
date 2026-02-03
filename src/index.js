@@ -22,6 +22,9 @@ import WebsiteBannerList from "./screen/website/banner/list";
 import UpsertWebsiteBanner from "./screen/website/banner/upsert";
 import WebsiteProduk from "./screen/website/produk/list";
 import UpsertWebsiteProduk from "./screen/website/produk/upsert";
+import PengaduaneContract from "./screen/eContract/list";
+import KlaimAsuransi from "./screen/user/klaimasuransi";
+import PengaduanKlaimAsuransi from "./screen/klaim_asuransi/list";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -98,6 +101,15 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/update_website_produk/:susu/:idParam"}>
                     <UpsertWebsiteProduk/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/eContract/list_pengaduan"}>
+                    <PengaduaneContract/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/klaim_asuransi/:idParam"}>
+                    <KlaimAsuransi/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/pengaduan_klaim_asuransi"}>
+                    <PengaduanKlaimAsuransi/>
                 </PrivateRoute>
             </Switch>
         </Router>

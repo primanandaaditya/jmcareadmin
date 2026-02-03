@@ -161,8 +161,8 @@ export default function Listuser(){
                                 <div className="table-responsive table-bordered">
                                     <table className="table table-responsive table-bordered table-striped">
                                         <thead className="text-primary text-center">
-                                        <th className="text-left">ID</th>
-                                        <th className="text-left">Status</th>
+                                        <th className="text-left">ID User</th>
+                                        <th className="text-left">Aktif</th>
                                         <th className="text-left">Nama di Confins
                                             <hr/>
                                             Nama di JMCare
@@ -177,16 +177,14 @@ export default function Listuser(){
                                             <tr className="text-left">
                                                 <td>{x.login_user_id}</td>
                                                 <td className="text-center">{x.is_active === '1' ?
-                                                    <i className="material-icons text-success">favorite</i> :
-                                                    <i className="material-icons text-danger">favorite</i>}
+                                                    <i className="material-icons text-success">check</i> :
+                                                    <i className="material-icons text-danger">close</i>}
                                                 </td>
                                                 <td>{(x.confins_nama === null || x.confins_nama === "") ? "-" : x.confins_nama}<br/>{(x.nama === null || x.nama === "") ? "-" : x.nama}
                                                 </td>
-
                                                 <td>{x.no_ktp}</td>
                                                 <td>{x.email}</td>
                                                 <td>{x.no_hp}</td>
-
                                                 <td className="td-actions text-center">
                                                     {jenis === "list" ?
                                                         <div>
@@ -274,6 +272,19 @@ export default function Listuser(){
                                                                     type="button" rel="tooltip"
                                                                     className="btn btn-default">
                                                                     Pilih kontrak
+                                                                </Link> :
+                                                                <b><p className="text-info">Bukan debitur</p></b>}
+                                                        </div>
+                                                        : <div></div>
+                                                    }
+                                                    {jenis === 'klaim_asuransi'
+                                                        ? <div>
+                                                            {x.jenisdebitur === '1' ?
+                                                                <Link
+                                                                    to={"/klaim_asuransi/" + base64.encode(JSON.stringify(x))}
+                                                                    type="button" rel="tooltip"
+                                                                    className="btn btn-default">
+                                                                    Lihat
                                                                 </Link> :
                                                                 <b><p className="text-info">Bukan debitur</p></b>}
                                                         </div>

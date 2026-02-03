@@ -57,7 +57,7 @@ export default function Sidebar(){
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
                                 <i className="material-icons">widgets</i>
-                                <p>User
+                                <p>User JMCare
                                     <b className="caret"></b>
                                 </p>
                             </a>
@@ -99,6 +99,12 @@ export default function Sidebar(){
                                             eContract
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link to={"/user/klaim_asuransi"}>
+                                            <i className="material-icons">widgets</i>
+                                            Klaim Asuransi
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -129,56 +135,34 @@ export default function Sidebar(){
                                             Produk
                                         </Link>
                                     </li>
-
-
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a data-toggle="collapse" href="#formsExamples">
-                                <i className="material-icons">content_paste</i>
-                                <p>Forms
+                            <a data-toggle="collapse" href="#componentsExamples2">
+                                <i className="material-icons">apps</i>
+                                <p>Pengaduan
                                     <b className="caret"></b>
                                 </p>
                             </a>
-                            <div className="collapse" id="formsExamples">
+                            <div className="collapse" id="componentsExamples2">
                                 <ul className="nav">
                                     <li>
-                                        <a href="forms/regular.html">Regular Forms</a>
+                                        <Link to={"/eContract/list_pengaduan"}>
+                                            <i className="material-icons">widgets</i>
+                                            eContract
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a href="forms/extended.html">Extended Forms</a>
-                                    </li>
-                                    <li>
-                                        <a href="forms/validation.html">Validation Forms</a>
-                                    </li>
-                                    <li>
-                                        <a href="forms/wizard.html">Wizard</a>
+                                        <Link to={"/pengaduan_klaim_asuransi"}>
+                                            <i className="material-icons">widgets</i>
+                                            Klaim asuransi
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <a data-toggle="collapse" href="#tablesExamples">
-                                <i className="material-icons">grid_on</i>
-                                <p>Tables
-                                    <b className="caret"></b>
-                                </p>
-                            </a>
-                            <div className="collapse" id="tablesExamples">
-                                <ul className="nav">
-                                    <li>
-                                        <a href="tables/regular.html">Regular Tables</a>
-                                    </li>
-                                    <li>
-                                        <a href="tables/extended.html">Extended Tables</a>
-                                    </li>
-                                    <li>
-                                        <a href="tables/datatables.net.html">DataTables.net</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+
                         <li>
                             <a data-toggle="collapse" href="#mapsExamples">
                                 <i className="material-icons">place</i>

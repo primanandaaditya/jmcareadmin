@@ -27,6 +27,11 @@ class Endpoint{
     static banner_get_website_produk = "banner/get_website_produk"
     static banner_upsert_website_produk = "banner/upsert_website_produk"
     static banner_delete_website_produk = "banner/delete_website_produk"
+    static eContract_list_pengaduan = "eContract/get_pengaduan"
+    static eContract_delete_pengaduan = "eContract/delete_pengaduan"
+    static klaim_asuransi_list = "Klaimasuransi/list"
+    static dropdown_cabang = "dropdown/cabang"
+    static klaimasuransi = "klaimasuransi"
 }
 export default Endpoint;
 
