@@ -4,6 +4,7 @@ import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
 import ContentWrapper from "../../component/ContentWrapper";
 import Loading from "../../component/Loading/001/Loading";
+import {Link} from "react-router-dom";
 
 export default function PengaduanKlaimAsuransi(){
 
@@ -120,15 +121,15 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                <div className="col-lg-3">
-                                    <div className="form-group label-floating">
-                                        <label className="control-label">Nomor agreement
-                                        </label>
-                                        <input {...register("agreement_no")}
-                                               className="form-control"
-                                               type="text"/>
-                                    </div>
-                                </div>
+                                {/*<div className="col-lg-3">*/}
+                                {/*    <div className="form-group label-floating">*/}
+                                {/*        <label className="control-label">Nomor agreement*/}
+                                {/*        </label>*/}
+                                {/*        <input {...register("agreement_no")}*/}
+                                {/*               className="form-control"*/}
+                                {/*               type="text"/>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
 
                             <div className="row">
@@ -150,15 +151,15 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                <div className="col-lg-3">
-                                    <div className="form-group label-floating">
-                                        <label className="control-label">Nomor kontrak
-                                        </label>
-                                        <input {...register("agreement_no")}
-                                               className="form-control"
-                                               type="text"/>
-                                    </div>
-                                </div>
+                                {/*<div className="col-lg-3">*/}
+                                {/*    <div className="form-group label-floating">*/}
+                                {/*        <label className="control-label">Email*/}
+                                {/*        </label>*/}
+                                {/*        <input {...register("email")}*/}
+                                {/*               className="form-control"*/}
+                                {/*               type="email"/>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                                 <div className="col-lg-3">
                                     <div className="form-group label-floating">
                                         <label className="control-label">Merk kendaraan
@@ -198,15 +199,15 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                <div className="col-lg-3">
-                                    <div className="form-group label-floating">
-                                        <label className="control-label">Merk kendaraan
-                                        </label>
-                                        <input {...register("merk_kendaraan")}
-                                               className="form-control"
-                                               type="text"/>
-                                    </div>
-                                </div>
+                                {/*<div className="col-lg-3">*/}
+                                {/*    <div className="form-group label-floating">*/}
+                                {/*        <label className="control-label">Merk kendaraan*/}
+                                {/*        </label>*/}
+                                {/*        <input {...register("merk_kendaraan")}*/}
+                                {/*               className="form-control"*/}
+                                {/*               type="text"/>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
                             </div>
 
                             <div className="row">
@@ -324,11 +325,16 @@ export default function PengaduanKlaimAsuransi(){
                                             <td>{x.create_date}</td>
                                             <td className="text-center">{x.create_by}</td>
                                             <td className="td-actions text-center">
-                                                {/*<input*/}
-                                                {/*    type="checkbox"*/}
-                                                {/*    id= {"cek_" + x.id}*/}
-                                                {/*    onChange={(e) => handleCek(e, x.id)}*/}
-                                                {/*/>*/}
+                                                <Link to={"/detail_form_lanjutan/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-info btn-simple">
+                                                    <i className="material-icons">info</i>
+                                                </Link>
+                                                <Link to={"/update_klaim_asuransi_formawal/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-success btn-simple">
+                                                    <i className="material-icons">edit</i>
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))}

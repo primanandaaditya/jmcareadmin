@@ -7,6 +7,7 @@ import Loading from "../../component/Loading/001/Loading";
 import Rute from "../../helper/Rute";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
+import HeaderBack from "../../component/HeaderBack";
 
 export default function Updateuser(){
 
@@ -396,7 +397,7 @@ export default function Updateuser(){
                             <i className="material-icons">apps</i>
                         </div>
                         <div className="card-content">
-                            <h4 className="card-title">{idParam === Konstan.tag_insert ? 'Tambah User' : 'Update User'}</h4>
+                            <HeaderBack title={idParam === Konstan.tag_insert ? 'Tambah User' : 'Update User'}></HeaderBack>
                             <form onSubmit={handleSubmit(doUpdate)}>
                                 <input
                                     value={Konstan.tag_administrator}

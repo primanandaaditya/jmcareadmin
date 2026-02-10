@@ -19,6 +19,10 @@ export default function Listuser(){
     const issearch = useRef("0")
     let { jenis } = useParams();
 
+    useEffect( () => {
+        tampil(1)
+    },[])
+
     const nextData = () => {
         ppage.current += 1
         setKeyword("")
@@ -93,10 +97,6 @@ export default function Listuser(){
             })
         }
     }
-
-    useEffect( () => {
-        tampil(1)
-    },[])
 
     return(
         <div>

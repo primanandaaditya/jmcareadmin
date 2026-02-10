@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
 import Loading from "../../component/Loading/001/Loading";
+import HeaderBack from "../../component/HeaderBack";
 
 export default function Gantipassword(){
 
@@ -57,7 +58,7 @@ export default function Gantipassword(){
                         <i className="material-icons">apps</i>
                     </div>
                     <div className="card-content">
-                        <h4 className="card-title">Ganti Password</h4>
+                        <HeaderBack title="Ganti Password"></HeaderBack>
                         { loading ? <Loading/> :
                         <form onSubmit={handleSubmit(doGantiPassword)}>
                             <input

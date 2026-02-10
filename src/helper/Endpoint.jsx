@@ -31,7 +31,12 @@ class Endpoint{
     static eContract_delete_pengaduan = "eContract/delete_pengaduan"
     static klaim_asuransi_list = "Klaimasuransi/list"
     static dropdown_cabang = "dropdown/cabang"
+    static dropdown_jenis_klaim = "dropdown/jenis_klaim"
     static klaimasuransi = "klaimasuransi"
+    static klaimasuransi_riwayat_form_awal = "klaimasuransi/riwayat_form_awal"
+    static klaimasuransi_detail_form_awal = "klaimasuransi/detail_form_awal"
+    static klaimasuransi_detail_form_lanjutan = "klaimasuransi/detail_form_lanjutan"
+    static klaimasuransi_update_form_awal = "klaimasuransi/update_form_awal"
 }
 export default Endpoint;
 

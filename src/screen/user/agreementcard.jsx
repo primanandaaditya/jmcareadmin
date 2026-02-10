@@ -6,6 +6,7 @@ import Endpoint from "../../helper/Endpoint";
 import ContentWrapper from "../../component/ContentWrapper";
 import Loading from "../../component/Loading/001/Loading";
 import Konstan from "../../helper/Konstan";
+import HeaderBack from "../../component/HeaderBack";
 export default function Agreementcard(){
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({});
@@ -74,18 +75,19 @@ export default function Agreementcard(){
                     </div>
 
                     <div className="card-content table-responsive">
-                        <div className="row">
-                            <div className="col-lg-8">
-                                <h4 className="card-title">Agreement Card</h4>
-                            </div>
-                            <div className="col-lg-4 text-right">
-                                <button
-                                    className="btn btn-primary btn-simple btn-sm"
-                                    onClick={goback}>
-                                    &larr;Kembali
-                                </button>
-                            </div>
-                        </div>
+                        <HeaderBack title="Agreement Card"></HeaderBack>
+                        {/*<div className="row">*/}
+                        {/*    <div className="col-lg-8">*/}
+                        {/*        <h4 className="card-title">Agreement Card</h4>*/}
+                        {/*    </div>*/}
+                        {/*    <div className="col-lg-4 text-right">*/}
+                        {/*        <button*/}
+                        {/*            className="btn btn-primary btn-simple btn-sm"*/}
+                        {/*            onClick={goback}>*/}
+                        {/*            &larr;Kembali*/}
+                        {/*        </button>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
 
                         <div className="row">
                             <div className="col-lg-3 col-md-3 col-sm-3">

@@ -25,6 +25,8 @@ import UpsertWebsiteProduk from "./screen/website/produk/upsert";
 import PengaduaneContract from "./screen/eContract/list";
 import KlaimAsuransi from "./screen/user/klaimasuransi";
 import PengaduanKlaimAsuransi from "./screen/klaim_asuransi/list";
+import DetailFormLanjutan from "./screen/klaim_asuransi/detail";
+import UpdateKlaimAsuransiFormAwal from "./screen/klaim_asuransi/update";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -110,6 +112,12 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/pengaduan_klaim_asuransi"}>
                     <PengaduanKlaimAsuransi/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/detail_form_lanjutan/:idParam"}>
+                    <DetailFormLanjutan/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/update_klaim_asuransi_formawal/:idParam"}>
+                    <UpdateKlaimAsuransiFormAwal/>
                 </PrivateRoute>
             </Switch>
         </Router>

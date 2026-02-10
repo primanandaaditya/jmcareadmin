@@ -7,6 +7,7 @@ import ContentWrapper from "../../component/ContentWrapper";
 import Loading from "../../component/Loading/001/Loading";
 import Konstan from "../../helper/Konstan";
 import base64 from "react-native-base64";
+import HeaderBack from "../../component/HeaderBack";
 
 
 export default function Kontrak(){
@@ -109,28 +110,25 @@ export default function Kontrak(){
                     <div className="card-header card-header-icon" data-background-color="rose">
                         <i className="material-icons">apps</i>
                     </div>
+
                     <div className="card-content table-responsive">
-                        <div className="row">
-                            <div className="col-lg-8">
-                                <h4 className="card-title">Kontrak/Agreement <small className="category">Cabang
-                                    : {cabang}</small></h4>
-                            </div>
-                            <div className="col-lg-4 text-right">
-                                <button
-                                    onClick={goback}
-                                    className="btn btn-primary btn-simple btn-sm">&larr;Kembali</button>
-                            </div>
-                        </div>
+                        <HeaderBack title="Kontrak/Agreement"></HeaderBack>
                         {loading ? <Loading/> :
                             <table className="table table-striped table-bordered">
                                 <thead className="text-primary">
                                     <th className="">Agrmnt ID</th>
-                                    <th className="">No. Agreement</th>
+                                    <th className="">No.<br/> Agreement</th>
                                     <th className="">No. APP</th>
                                     <th className="">Serial No. 1<br/>Serial No. 2</th>
                                     <th className="">Tahun</th>
                                     <th className="">No. Plat</th>
-                                    <th className="">Merk/tipe/warna</th>
+                                    <th className="">
+                                        Merk/
+                                        <br/>
+                                        Tipe/
+                                        <br/>
+                                        Warna
+                                    </th>
                                     <th className="">Terlambat (hari)/<br/>Denda (Rp.)</th>
                                     <th className="td-actions text-center">Aksi</th>
                                 </thead>

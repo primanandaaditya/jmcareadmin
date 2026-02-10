@@ -7,7 +7,7 @@ import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
 import Loading from "../../component/Loading/001/Loading";
 import Rute from "../../helper/Rute";
-import base64 from "react-native-base64";
+import HeaderBack from "../../component/HeaderBack";
 
 export default function InsertFAQ(){
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({});
@@ -15,6 +15,17 @@ export default function InsertFAQ(){
     const [loading,setLoading] = useState(false)
     const [data,setData] = useState({})
     const history = useHistory();
+
+    useEffect( () => {
+        console.clear()
+        console.log('1')
+        if (id !== Konstan.tag_insert){
+            getDetailFAQ()
+        }else{
+            setValue("id", 0)
+            setValue("isInsert","1")
+        }
+    },[])
 
     async function getDetailFAQ  () {
         let param = {
@@ -40,17 +51,6 @@ export default function InsertFAQ(){
             setLoading(false)
         })
     }
-
-    useEffect( () => {
-        console.clear()
-        console.log('1')
-        if (id !== Konstan.tag_insert){
-            getDetailFAQ()
-        }else{
-            setValue("id", 0)
-            setValue("isInsert","1")
-        }
-    },[])
 
     const doInsert = data => {
         setLoading(true)
@@ -88,7 +88,7 @@ export default function InsertFAQ(){
                         <i className="material-icons">apps</i>
                     </div>
                     <div className="card-content">
-                        <h4 className="card-title">{id === Konstan.tag_insert ? 'Tambah FAQ' : 'Update FAQ'}</h4>
+                        <HeaderBack title={id === Konstan.tag_insert ? 'Tambah FAQ' : 'Update FAQ'}></HeaderBack>
                         <form onSubmit={handleSubmit(doInsert)}>
                             <input
                                 value={Konstan.tag_administrator}

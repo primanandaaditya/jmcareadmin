@@ -199,11 +199,10 @@ export default function FAQ(){
                                     </table>
                                 </div>
                             </div>
-                                }
-                            </div>
-                            </div>
-
-                            </ContentWrapper>
+                        }
+                    </div>
+                </div>
+            </ContentWrapper>
         </div>
     )
 }

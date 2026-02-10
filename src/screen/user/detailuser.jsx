@@ -8,6 +8,7 @@ import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
 import Loading from "../../component/Loading/001/Loading";
 import Rute from "../../helper/Rute";
+import HeaderBack from "../../component/HeaderBack";
 
 export default function Detailuser(){
 
@@ -57,21 +58,7 @@ export default function Detailuser(){
                         <i className="material-icons">apps</i>
                     </div>
                     <div className="card-content">
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <h4 className="card-title">Detail User</h4>
-                            </div>
-
-                            <div className="col-lg-6 text-right">
-                                <Link
-                                    type="button"
-                                    className="text-right"
-                                    to={"/user/list"}> &larr; Kembali
-                                </Link>
-                            </div>
-                        </div>
-                        <br/>
-
+                        <HeaderBack title="Detail User"></HeaderBack>
                         { loading === true ? <Loading/> :
                         <div className="row">
                             <div className="col-lg-4">

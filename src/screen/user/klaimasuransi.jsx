@@ -1,18 +1,48 @@
-import {useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {useEffect, useRef, useState} from "react";
+import {Link, useHistory, useParams} from "react-router-dom";
 import Loading from "../../component/Loading/001/Loading";
 import ContentWrapper from "../../component/ContentWrapper";
+import axios from "axios";
+import Endpoint from "../../helper/Endpoint";
+import HeaderBack from "../../component/HeaderBack";
 
 export default function KlaimAsuransi(){
 
     const [loading, setLoading] = useState(false);
-    const searchmode = useRef(0)
-    const [keyword, setKeyword] = useState("")
     const [data,setData] = useState([])
-    const [isinsert,setIsinsert] = useState(true)
-    const [pertanyaan, setPertanyaan] = useState("")
-    const [jawaban, setJawaban] = useState("")
-    const [id,setId] = useState("")
+    let { idParam } = useParams()
+    const history = useHistory();
+
+    useEffect( () => {
+        getData()
+    },[])
+
+    const goback = () => {
+        history.goBack()
+    }
+
+    const getData = () => {
+        let jso = JSON.parse(atob(idParam))
+        console.clear()
+        console.log("id " + jso.login_user_id)
+        setLoading(true)
+        const param = {
+            "id":jso.login_user_id
+        }
+        axios.post(Endpoint.BASE_URL + Endpoint.klaimasuransi_riwayat_form_awal, param)
+            .then(res => {
+                setLoading(false)
+                console.log(res.data)
+                if (res.data.isSuccess === true) {
+                    setData(res.data.payload)
+                }else{
+                    alert(res.data.message)
+                }
+            }).catch(function (error) {
+            alert(error)
+            setLoading(false)
+        })
+    }
 
     return(
         <div>
@@ -23,54 +53,83 @@ export default function KlaimAsuransi(){
                         <i className="material-icons">apps</i>
                     </div>
 
-                    <div className="card-content">
-                        <h4 className="card-title">Klaim Asuransi</h4>
+                    <div className="card-content table-responsive">
+                        <HeaderBack title="Klaim Asuransi"></HeaderBack>
                         {loading ? <Loading/> :
-                            <div>
-                                <div className="table-responsive table-bordered">
-                                    <table className="table table-responsive table-bordered table-striped">
-                                        <thead className="text-primary text-center">
-                                        <th className="text-center">ID</th>
-                                        <th className="text-center">Pertanyaan</th>
-                                        <th className="text-center">Jawaban</th>
-                                        <th className="text-center">Tanggal</th>
-                                        <th className="td-actions text-center">Aksi</th>
-                                        </thead>
-                                        <tbody>
-                                        {data.map(x => (
-                                            <tr>
-                                                <td className="text-center">{x.id}</td>
-                                                <td>{x.pertanyaan}</td>
-                                                <td>{x.jawaban.substring(0, 10) + "..."}</td>
-                                                <td className="text-center">{x.create_date}</td>
-                                                <td className="td-actions text-center">
-                                                    {/*<Link to={"/insert_faq/" + base64.encode(JSON.stringify(x) )}*/}
-                                                    {/*        type="button" rel="tooltip"*/}
-                                                    {/*        className="btn btn-success btn-simple">*/}
-                                                    {/*    <i className="material-icons">edit</i>*/}
-                                                    {/*</Link>*/}
-                                                    <Link to={"/insert_faq/" + x.id}
-                                                          type="button" rel="tooltip"
-                                                          className="btn btn-success btn-simple">
-                                                        <i className="material-icons">edit</i>
-                                                    </Link>
-                                                    <button
-                                                        // onClick={() => hapus(x.id)}
-                                                        type="button" rel="tooltip"
-                                                        className="btn btn-danger btn-simple">
-                                                        <i className="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        }
+                            <div className="table-responsive table-bordered">
+                                <table className="table table-responsive table-bordered table-striped">
+                                    <thead className="text-primary text-center">
+                                    <th>ID</th>
+                                    <th className="text-center">ID User JMCare</th>
+                                    <th className="text-center">ID User Confins</th>
+                                    <th className="text-center">Tanggal Lapor</th>
+                                    <th className="text-center">Nama Lengkap</th>
+                                    <th className="text-center">Nama Tertanggung</th>
+                                    <th className="text-center">No. Agreement</th>
+                                    <th className="text-center">Agr ID</th>
+                                    <th className="text-center">No. App</th>
+                                    <th className="text-center">Merk Kend</th>
+                                    <th className="text-center">Tahun Kend</th>
+                                    <th className="text-center">Nomor Rangka</th>
+                                    <th className="text-center">Nomor Mesin</th>
+                                    <th className="text-center">Nomor Plat</th>
+                                    <th className="text-center">Kantor Cabang</th>
+                                    <th className="text-center">Nomor Polis Asuransi</th>
+                                    <th className="text-center">Jenis Pertanggungan</th>
+                                    <th className="text-center">Tanggal Kejadian</th>
+                                    <th className="text-center">Tipe Klaim</th>
+                                    <th className="text-center">Jenis Klaim</th>
+                                    <th className="text-center">Status Klaim</th>
+                                    <th className="text-center">File Surat Keputusan</th>
+                                    <th className="text-center">Create Date</th>
+                                    <th className="text-center">Dibuat Oleh</th>
+                                    <th className="td-actions text-center">
+                                        Aksi
+                                    </th>
+                                    </thead>
+
+                                    <tbody>
+                                    {data.length === 0 ? <p className="text-center">Tidak ada data</p> : <div></div>}
+                                    {data.map(x => (
+                                        <tr>
+                                            <td className="text-center">{x.id}</td>
+                                            <td className="text-center">{x.login_user_id}</td>
+                                            <td>{x.cust_id_confins}</td>
+                                            <td>{x.tgl_lapor}</td>
+                                            <td>{x.cust_full_name}</td>
+                                            <td>{x.nama_tertanggung}</td>
+                                            <td>{x.agreement_no}</td>
+                                            <td className="text-center">{x.agreement_id}</td>
+                                            <td>{x.app_no}</td>
+                                            <td>{x.merk_kendaraan}</td>
+                                            <td className="text-center">{x.tahun_pembuatan}</td>
+                                            <td>{x.nomor_rangka}</td>
+                                            <td>{x.nomor_mesin}</td>
+                                            <td>{x.nomor_plat}</td>
+                                            <td>{x.branch_id + "-" + x.branch_name}</td>
+                                            <td>{x.nomor_polis_asuransi}</td>
+                                            <td>{x.jenis_pertanggungan}</td>
+                                            <td>{x.tgl_kejadian}</td>
+                                            <td>{x.tipe_klaim}</td>
+                                            <td className="text-center">{x.jenis_klaim}</td>
+                                            <td>{x.status_klaim}</td>
+                                            <td>{x.file_surat_keputusan}</td>
+                                            <td>{x.create_date}</td>
+                                            <td className="text-center">{x.create_by}</td>
+                                            <td className="td-actions text-center">
+                                                <Link to={"/detail_form_lanjutan/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-sm btn-dribbble">
+                                                   Detail
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </table>
+                            </div>}
                     </div>
                 </div>
-
             </ContentWrapper>
         </div>
     )
