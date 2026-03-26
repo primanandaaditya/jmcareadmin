@@ -186,7 +186,7 @@ export default function DetailFormLanjutan(){
                                                         <td className="text-left">{data.tempat_kejadian}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Kecepatan saat kejadian</td>
+                                                        <td className="text-left">Kecepatan saat kejadian (km/jam)</td>
                                                         <td className="text-left">{data.kecepatan_saat_kejadian}</td>
                                                     </tr>
                                                     </tbody>
@@ -221,12 +221,12 @@ export default function DetailFormLanjutan(){
                                                     <tr>
                                                         <td className="text-left">Pengemudi bekerja kepada tertanggung
                                                         </td>
-                                                        <td className="text-left">{data.pengemudi_bekerja_kpd_tertanggung}</td>
+                                                        <td className="text-left">{data.pengemudi_bekerja_kpd_tertanggung  === "1" ? "Ya" : "Tidak" }</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Pengemudi sepengetahuan tertanggung
                                                         </td>
-                                                        <td className="text-left">{data.pengemudi_sepengetahuan_tertanggung}</td>
+                                                        <td className="text-left">{data.pengemudi_sepengetahuan_tertanggung === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Penggunaan kendaraan kejadian</td>
@@ -234,7 +234,7 @@ export default function DetailFormLanjutan(){
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Dilaporkan ke polisi</td>
-                                                        <td className="text-left">{data.dilaporkan_ke_polisi}</td>
+                                                        <td className="text-left">{data.dilaporkan_ke_polisi === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Nama polsek</td>
@@ -249,8 +249,8 @@ export default function DetailFormLanjutan(){
                                                         <td className="text-left">{data.sisi_kendaraan_rusak}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Estimasi kerugian</td>
-                                                        <td className="text-left">{data.estimasi_kerugian}</td>
+                                                        <td className="text-left">Estimasi kerugian (Rp.)</td>
+                                                        <td className="text-left">{data.estimasi_kerugian.toLocaleString()}</td>
                                                     </tr>
 
                                                     </tbody>
@@ -264,7 +264,7 @@ export default function DetailFormLanjutan(){
                                                     <tbody>
                                                     <tr>
                                                         <td className="text-left">Pihak lain bertanggung jawab</td>
-                                                        <td className="text-left">{data.pihak_lain_bertanggungjawab}</td>
+                                                        <td className="text-left">{data.pihak_lain_bertanggungjawab === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Nama pihak lain</td>
@@ -300,13 +300,13 @@ export default function DetailFormLanjutan(){
                                                         <td className="text-left">{data.nomor_hp_pihak_ketiga}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Kerugian pihak ketiga</td>
-                                                        <td className="text-left">{data.kerugian_pihak_ketiga}</td>
+                                                        <td className="text-left">Kerugian pihak ketiga (Rp.)</td>
+                                                        <td className="text-left">{data.kerugian_pihak_ketiga.toLocaleString()}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Kerugian pihak ketiga diasuransikan
                                                         </td>
-                                                        <td className="text-left">{data.kerugian_pihak_ketiga_diasuransikan}</td>
+                                                        <td className="text-left">{data.kerugian_pihak_ketiga_diasuransikan === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Asuransi pihak ketiga</td>
@@ -342,29 +342,29 @@ export default function DetailFormLanjutan(){
                                                         <td className="text-left">{data.catatan_asuransi}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Document checklist</td>
+                                                        <td className="text-left">Dokumen checklist</td>
                                                         <td className="text-left">{data.document_checklist}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Document checklist dari asuransi</td>
+                                                        <td className="text-left">Dokumen checklist dari asuransi</td>
                                                         <td className="text-left">{data.document_checklist_dari_asuransi}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Document checklist diterima asuransi
+                                                        <td className="text-left">Dokumen checklist diterima asuransi
                                                         </td>
-                                                        <td className="text-left">{data.document_checklist_diterima_asuransi}</td>
+                                                        <td className="text-left">{data.document_checklist_diterima_asuransi === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Nominal dari asuransi sebelum
-                                                            banding
+                                                            banding (Rp.)
                                                         </td>
-                                                        <td className="text-left">{data.nominal_dari_asuransi_sebelum_banding}</td>
+                                                        <td className="text-left">{data.nominal_dari_asuransi_sebelum_banding.toLocaleString()}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Nominal dari asuransi sesudah
-                                                            banding
+                                                            banding (Rp.)
                                                         </td>
-                                                        <td className="text-left">{data.nominal_dari_asuransi_sesudah_banding}</td>
+                                                        <td className="text-left">{data.nominal_dari_asuransi_sesudah_banding.toLocaleString()}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Catatan banding</td>
@@ -380,11 +380,11 @@ export default function DetailFormLanjutan(){
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Debitur setuju nominal</td>
-                                                        <td className="text-left">{data.debitur_setuju_nominal}</td>
+                                                        <td className="text-left">{data.debitur_setuju_nominal === "1" ? "Ya" : "Tidak"}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td className="text-left">Nominal naik banding</td>
-                                                        <td className="text-left">{data.nominal_naik_banding}</td>
+                                                        <td className="text-left">Nominal naik banding (Rp.)</td>
+                                                        <td className="text-left">{data.nominal_naik_banding.toLocaleString()}</td>
                                                     </tr>
                                                     <tr>
                                                         <td className="text-left">Nama file PDF form klaim</td>

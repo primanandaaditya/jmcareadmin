@@ -27,6 +27,9 @@ import KlaimAsuransi from "./screen/user/klaimasuransi";
 import PengaduanKlaimAsuransi from "./screen/klaim_asuransi/list";
 import DetailFormLanjutan from "./screen/klaim_asuransi/detail";
 import UpdateKlaimAsuransiFormAwal from "./screen/klaim_asuransi/update";
+import UpdateKlaimAsuransiFormLanjutan from "./screen/klaim_asuransi/update_formlanjutan";
+import Grafik from "./screen/grafik/grafik";
+import PetaUser from "./screen/user/petauser";
 
 function PrivateRoute({ children, ...rest }) {
     return (
@@ -51,7 +54,7 @@ function PrivateRoute({ children, ...rest }) {
 
 ReactDOM.render(
   <React.StrictMode>
-        <Router>
+        <Router basename="/JMCareReact">
             <Switch>
                 <Route exact path="/">
                     <Login/>
@@ -118,6 +121,15 @@ ReactDOM.render(
                 </PrivateRoute>
                 <PrivateRoute exact path={"/update_klaim_asuransi_formawal/:idParam"}>
                     <UpdateKlaimAsuransiFormAwal/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/update_klaim_asuransi_formlanjutan/:idParam"}>
+                    <UpdateKlaimAsuransiFormLanjutan/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/grafik/:jenis"}>
+                    <Grafik/>
+                </PrivateRoute>
+                <PrivateRoute exact path={"/peta_user"}>
+                    <PetaUser/>
                 </PrivateRoute>
             </Switch>
         </Router>

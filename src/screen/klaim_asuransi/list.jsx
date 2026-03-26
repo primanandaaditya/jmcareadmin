@@ -121,15 +121,6 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                {/*<div className="col-lg-3">*/}
-                                {/*    <div className="form-group label-floating">*/}
-                                {/*        <label className="control-label">Nomor agreement*/}
-                                {/*        </label>*/}
-                                {/*        <input {...register("agreement_no")}*/}
-                                {/*               className="form-control"*/}
-                                {/*               type="text"/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                             </div>
 
                             <div className="row">
@@ -151,15 +142,6 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                {/*<div className="col-lg-3">*/}
-                                {/*    <div className="form-group label-floating">*/}
-                                {/*        <label className="control-label">Email*/}
-                                {/*        </label>*/}
-                                {/*        <input {...register("email")}*/}
-                                {/*               className="form-control"*/}
-                                {/*               type="email"/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                                 <div className="col-lg-3">
                                     <div className="form-group label-floating">
                                         <label className="control-label">Merk kendaraan
@@ -199,15 +181,6 @@ export default function PengaduanKlaimAsuransi(){
                                                type="text"/>
                                     </div>
                                 </div>
-                                {/*<div className="col-lg-3">*/}
-                                {/*    <div className="form-group label-floating">*/}
-                                {/*        <label className="control-label">Merk kendaraan*/}
-                                {/*        </label>*/}
-                                {/*        <input {...register("merk_kendaraan")}*/}
-                                {/*               className="form-control"*/}
-                                {/*               type="text"/>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
                             </div>
 
                             <div className="row">
@@ -226,9 +199,8 @@ export default function PengaduanKlaimAsuransi(){
                                         </label>
                                         {loadcabang ? <div>Loading...</div> :
                                             <select
-                                                // onChangeCapture={(e) => handlePropinsi(e)}
                                                 {...register("branch_id")} className="form-control">
-                                                <option value="-1" disabled selected>Pilih salah satu</option>
+                                                <option value="" disabled selected>Pilih salah satu</option>
                                                 {datacabang.map(x => (
                                                     <option value={x.id}>{x.name}</option>
                                                 ))}
@@ -324,16 +296,23 @@ export default function PengaduanKlaimAsuransi(){
                                             <td className="text-center">{x.is_error_hit_confins}</td>
                                             <td>{x.create_date}</td>
                                             <td className="text-center">{x.create_by}</td>
-                                            <td className="td-actions text-center">
+                                            <td className="td-actions">
                                                 <Link to={"/detail_form_lanjutan/" + x.id}
                                                       type="button" rel="tooltip"
                                                       className="btn btn-info btn-simple">
-                                                    <i className="material-icons">info</i>
+                                                    <i className="material-icons">info</i>Detail
                                                 </Link>
+                                                <br/>
                                                 <Link to={"/update_klaim_asuransi_formawal/" + x.id}
                                                       type="button" rel="tooltip"
                                                       className="btn btn-success btn-simple">
-                                                    <i className="material-icons">edit</i>
+                                                    <i className="material-icons">edit</i>Edit Form Awal
+                                                </Link>
+                                                <br/>
+                                                <Link to={"/update_klaim_asuransi_formlanjutan/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-warning btn-simple">
+                                                    <i className="material-icons">edit</i>Edit Lanjutan
                                                 </Link>
                                             </td>
                                         </tr>

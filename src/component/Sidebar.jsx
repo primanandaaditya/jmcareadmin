@@ -16,8 +16,7 @@ export default function Sidebar(){
 
     return(
         <div>
-            <div className="sidebar" data-active-color="rose" data-background-color="black"
-                 data-image={sidebar}>
+            <div className="sidebar background-login" data-active-color="rose" data-background-color="black" data-image={sidebar}>
                 <div className="logo">
                     <a href="http://www.creative-tim.com/" className="simple-text">
                         JMCARE ADMIN
@@ -28,7 +27,7 @@ export default function Sidebar(){
                         Ct
                     </a>
                 </div>
-                <div className="sidebar-wrapper">
+                <div className="sidebar-wrapper" >
                     <div className="user">
                         <div className="photo">
                             <img src={avatar}/>
@@ -49,15 +48,21 @@ export default function Sidebar(){
                     </div>
                     <ul className="nav">
                         <li>
+                            <Link to={Rute.home}>
+                                <i className="material-icons">apps</i>
+                                Dashboard
+                            </Link>
+                        </li>
+                        <li>
                             <Link to={Rute.faq}>
-                                <i className="material-icons">widgets</i>
+                                <i className="material-icons">apps</i>
                                 FAQ
                             </Link>
                         </li>
                         <li>
                             <a data-toggle="collapse" href="#pagesExamples">
-                                <i className="material-icons">widgets</i>
-                                <p>User JMCare
+                                <i className="material-icons">apps</i>
+                                <p>User
                                     <b className="caret"></b>
                                 </p>
                             </a>
@@ -65,43 +70,43 @@ export default function Sidebar(){
                                 <ul className="nav">
                                     <li>
                                         <Link to={"/user/list"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Daftar
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/gantipassword"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Ganti password
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/kontrak"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Kontrak
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/agreementcard"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Agreement Card
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/epolis"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             ePolis
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/econtract"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             eContract
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/user/klaim_asuransi"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Klaim Asuransi
                                         </Link>
                                     </li>
@@ -119,19 +124,19 @@ export default function Sidebar(){
                                 <ul className="nav">
                                     <li>
                                         <Link to={"/website_artikel"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Artikel
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/website_banner"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Banner
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/website_produk"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Produk
                                         </Link>
                                     </li>
@@ -149,58 +154,36 @@ export default function Sidebar(){
                                 <ul className="nav">
                                     <li>
                                         <Link to={"/eContract/list_pengaduan"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             eContract
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to={"/pengaduan_klaim_asuransi"}>
-                                            <i className="material-icons">widgets</i>
+                                            <i className="material-icons">apps</i>
                                             Klaim asuransi
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-
                         <li>
-                            <a data-toggle="collapse" href="#mapsExamples">
-                                <i className="material-icons">place</i>
-                                <p>Maps
+                            <a data-toggle="collapse" href="#componentsExamplesGrafik">
+                                <i className="material-icons">apps</i>
+                                <p>Grafik
                                     <b className="caret"></b>
                                 </p>
                             </a>
-                            <div className="collapse" id="mapsExamples">
+                            <div className="collapse" id="componentsExamplesGrafik">
                                 <ul className="nav">
                                     <li>
-                                        <a href="maps/google.html">Google Maps</a>
-                                    </li>
-                                    <li>
-                                        <a href="maps/fullscreen.html">Full Screen Map</a>
-                                    </li>
-                                    <li>
-                                        <a href="maps/vector.html">Vector Map</a>
+                                        <Link to={"/grafik/user_bulanan"}>
+                                            <i className="material-icons">apps</i>
+                                            User
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li>
-                            <a href="widgets.html">
-                                <i className="material-icons">widgets</i>
-                                <p>Widgets</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="charts.html">
-                                <i className="material-icons">timeline</i>
-                                <p>Charts</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i className="material-icons">date_range</i>
-                                <p>Calendar</p>
-                            </a>
                         </li>
                     </ul>
                 </div>

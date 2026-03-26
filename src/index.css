@@ -7,6 +7,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+li { cursor: pointer; }
+
+.img_logo_login {
+  width: 30px;
+  height: 30px;
+}
+
+.background-login {
+  background-image: url('./login.jpg'); /* Relative path from the CSS file */
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.hidden-component {
+  display: none;
+}
+
+.chart-div {
+  overflow: auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -33,4 +55,12 @@ td {
 
 HeaderBack {
   padding-top: 25px;
+}
+
+.borderless td, .borderless th {
+  border: none;
+}
+
+.noBorder {
+  border:none !important;
 }

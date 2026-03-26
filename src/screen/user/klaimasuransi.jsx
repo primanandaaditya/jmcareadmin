@@ -116,11 +116,24 @@ export default function KlaimAsuransi(){
                                             <td>{x.file_surat_keputusan}</td>
                                             <td>{x.create_date}</td>
                                             <td className="text-center">{x.create_by}</td>
-                                            <td className="td-actions text-center">
+                                            <td className="td-actions">
                                                 <Link to={"/detail_form_lanjutan/" + x.id}
                                                       type="button" rel="tooltip"
-                                                      className="btn btn-sm btn-dribbble">
-                                                   Detail
+                                                      className="btn btn-simple btn-info">
+                                                    <i className="material-icons">info</i>
+                                                    Detail
+                                                </Link>
+                                                <br/>
+                                                <Link to={"/update_klaim_asuransi_formawal/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-success btn-simple">
+                                                    <i className="material-icons">edit</i>Edit Form Awal
+                                                </Link>
+                                                <br/>
+                                                <Link to={"/update_klaim_asuransi_formlanjutan/" + x.id}
+                                                      type="button" rel="tooltip"
+                                                      className="btn btn-warning btn-simple">
+                                                    <i className="material-icons">edit</i>Edit Lanjutan
                                                 </Link>
                                             </td>
                                         </tr>

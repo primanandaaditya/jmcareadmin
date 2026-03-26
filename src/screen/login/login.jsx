@@ -5,6 +5,10 @@ import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
 import Konstan from "../../helper/Konstan";
 import Rute from "../../helper/Rute";
+import logo from "../../asset/gambar/logo_jmpmfi.png"
+import backgroundlogin from "../../asset/gambar/login.jpg"
+import Sidebar from "../../component/Sidebar";
+
 
 export default function Login(){
 
@@ -31,29 +35,6 @@ export default function Login(){
         }
     }
 
-    // const doLogin = data => {
-    //     setLoading(true)
-    //     axios.post(Endpoint.BASE_URL + Endpoint.login, data)
-    //     .then(res => {
-    //         console.clear()
-    //         setLoading(false)
-    //         console.log(res.data)
-    //         if (res.data.error === true){
-    //             alert("Login gagal")
-    //         }else{
-    //             localStorage.setItem(Konstan.KEY_ISLOGIN, Konstan.KEY_LOGIN_SUKSES)
-    //             localStorage.setItem(Konstan.KEY_NAMA, res.data.pesan.nama)
-    //             localStorage.setItem(Konstan.KEY_USER_ID, res.data.pesan.id)
-    //             history.push(Rute.home)
-    //         }
-    //
-    //     }).catch(function (error) {
-    //         alert(error)
-    //         setLoading(false)
-    //     })
-    // }
-
-
     return(
         <div>
             <nav className="navbar navbar-primary navbar-transparent navbar-absolute">
@@ -74,33 +55,41 @@ export default function Login(){
                 </div>
             </nav>
             <div className="wrapper wrapper-full-page">
-                <div className="full-page login-page" filter-color="black" data-image="./assets/img/login.jpg">
+                <div className="full-page login-page background-login" filter-color="black" data-image={backgroundlogin}>
                     <div className="content">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                                     <form id="form" onSubmit={handleSubmit(doLogin)}>
                                         <div className="card card-login">
+
                                             <div className="card-header text-center" data-background-color="green">
                                                 <h5 className="card-title">LOGIN</h5>
                                             </div>
+
                                             <div className="card-content">
+                                                <img className="img_logo_login" src={logo}/>
+                                                <br/>
+                                                <br/>
+                                                <hr/>
                                                 <div className="input-group">
                                                     <span className="input-group-addon">
                                                         <i className="material-icons">face</i>
                                                     </span>
                                                     <div className="form-group label-floating">
                                                         <label className="control-label">NRK</label>
-                                                        <input {...register("nama", {required : true})} type="text" className="form-control"/>
+                                                        <input {...register("nama", {required: true})} type="text"
+                                                               className="form-control"/>
                                                     </div>
                                                 </div>
                                                 <div className="input-group">
                                                     <span onClick={() => toggleTipe()} className="input-group-addon">
-                                                        <i className="material-icons"> { tipe === "password" ? "lock" : "lock_outline" } </i>
+                                                        <i className="material-icons"> {tipe === "password" ? "lock" : "lock_outline"} </i>
                                                     </span>
                                                     <div className="form-group label-floating">
                                                         <label className="control-label">Password</label>
-                                                        <input {...register("sandi",{required:true})} type={ tipe } className="form-control"/>
+                                                        <input {...register("sandi", {required: true})} type={tipe}
+                                                               className="form-control"/>
                                                     </div>
                                                 </div>
                                             </div>

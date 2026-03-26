@@ -1180,6 +1180,73 @@ demo = {
         });
     },
 
+    createChartLine: function(dataRoundedLineChart, max_sumbu_y, theight, twidth){
+        optionsRoundedLineChart = {
+            lineSmooth: Chartist.Interpolation.cardinal({
+                tension: 10
+            }),
+            axisX: {
+                showGrid: false,
+            },
+            low: 0,
+            high: max_sumbu_y, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+            chartPadding: { top: 0, right: 0, bottom: 0, left: 0},
+            showPoint: true,
+            height: theight,
+            width: twidth,
+        }
+        var RoundedLineChart = new Chartist.Line('#roundedLineChart', dataRoundedLineChart, optionsRoundedLineChart);
+        md.startAnimationForLineChart(RoundedLineChart);
+    },
+
+    createChartBar: function(dataSimpleBarChart, max_sumbu_y, theight, twidth){
+        var optionsSimpleBarChart = {
+            seriesBarDistance: 10,
+            high: max_sumbu_y,
+            height: theight,
+            width: twidth,
+            axisX: {
+                showGrid: false
+            }
+        };
+        var responsiveOptionsSimpleBarChart = [
+            ['screen and (max-width: 640px)', {
+                seriesBarDistance: 25,
+                axisX: {
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }]
+        ];
+        var simpleBarChart = Chartist.Bar('#simpleBarChart', dataSimpleBarChart, optionsSimpleBarChart, responsiveOptionsSimpleBarChart);
+        md.startAnimationForBarChart(simpleBarChart);
+    },
+
+    createChartPie: function(dataSimpleBarChart, max_sumbu_y, theight, twidth){
+        var optionsSimpleBarChart = {
+            seriesBarDistance: 10,
+            high: max_sumbu_y,
+            height: theight,
+            width: twidth,
+            axisX: {
+                showGrid: false
+            }
+        };
+        var responsiveOptionsSimpleBarChart = [
+            ['screen and (max-width: 640px)', {
+                seriesBarDistance: 25,
+                axisX: {
+                    labelInterpolationFnc: function (value) {
+                        return value[0];
+                    }
+                }
+            }]
+        ];
+        var simpleBarChart = Chartist.Bar('#simpleBarChart', dataSimpleBarChart, optionsSimpleBarChart, responsiveOptionsSimpleBarChart);
+        md.startAnimationForBarChart(simpleBarChart);
+    },
+
     suksesToast: function(msg){
         type = ['success'];
         color = Math.floor((Math.random() * 6) + 1);

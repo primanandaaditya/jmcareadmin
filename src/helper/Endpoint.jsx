@@ -1,11 +1,13 @@
 
 class Endpoint{
     static BASE_URL = "http://localhost:8016/api/";
+    // static BASE_URL = "https://ws.mpm-finance.com/JMCareAdmin/api/";
     static faq = "faq/get_faq"
     static faq_detail = "faq/detail_faq"
     static faq_delete = "faq/delete"
     static faq_update = "faq/update"
     static user = "user/get_user"
+    static dashboarduser = "user/DashboardUser"
     static pekerjaan = "pekerjaan/get_jenis_pekerjaan"
     static wilayah = "wilayah/get_wilayah"
     static pendidikan = "moviewlistparam/get_moviewlistparam"
@@ -37,6 +39,8 @@ class Endpoint{
     static klaimasuransi_detail_form_awal = "klaimasuransi/detail_form_awal"
     static klaimasuransi_detail_form_lanjutan = "klaimasuransi/detail_form_lanjutan"
     static klaimasuransi_update_form_awal = "klaimasuransi/update_form_awal"
+    static klaimasuransi_detail_form_lanjutan = "klaimasuransi/detail_form_lanjutan"
+    static grafik_user = "user/chartuseracc"
 }
 export default Endpoint;
 

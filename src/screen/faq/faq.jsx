@@ -18,41 +18,9 @@ export default function FAQ(){
     const [jawaban, setJawaban] = useState("")
     const [id,setId] = useState("")
 
-    const beginInsert = () => {
-        console.log("is_insert")
-        setIsinsert(true)
-    }
-
-    const doInsert = () => {
-        console.log("do_insert")
-        setLoading(true)
-        const param = {
-            "pertanyaan": pertanyaan,
-            "jawaban": jawaban,
-            "create_by": Konstan.tag_administrator,
-            "isInsert":"1",
-            "id":0
-        }
-        console.log(JSON.stringify(param))
-        axios.post(Endpoint.BASE_URL + Endpoint.faq_update, param)
-            .then(res => {
-                setLoading(false)
-                console.log(res.data)
-                if (res.data.isSuccess === true) {
-                    // eslint-disable-next-line no-undef
-                    suksesToast(res.data.payload)
-                    // toast(Konstan.tag_sukses, res.data.payload)
-                    getData()
-                }else{
-                    // eslint-disable-next-line no-undef
-                    errorToast(res.data.payload)
-                }
-            }).catch(function (error) {
-            // eslint-disable-next-line no-undef
-            errorToast(error)
-            setLoading(false)
-        })
-    }
+    useEffect( () => {
+        getData()
+    },[])
 
     const hapus = (index) => {
         // eslint-disable-next-line no-undef
@@ -87,11 +55,6 @@ export default function FAQ(){
         }
     }
 
-    const edit = () => {
-        // eslint-disable-next-line no-undef
-        toast("dsf","dsf")
-    }
-
     async function doSearch() {
         if (keyword !== ''){
             searchmode.current = 1
@@ -122,10 +85,6 @@ export default function FAQ(){
             setLoading(false)
         })
     }
-
-    useEffect( () => {
-        getData()
-    },[])
 
     return(
         <div>
