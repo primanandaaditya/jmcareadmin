@@ -1,7 +1,8 @@
 
 class Endpoint{
-    static BASE_URL = "http://localhost:8016/api/";
-    // static BASE_URL = "https://ws.mpm-finance.com/JMCareAdmin/api/";
+    // static BASE_URL = "http://localhost:8016/api/";
+    static BASE_URL = "https://ws.mpm-finance.com/JMCareAdmin/api/";
+    // static BASE_URL = "https://apicloud.jaccs-mpmfinance.com/JMCareAdmin/api/";
     static faq = "faq/get_faq"
     static faq_detail = "faq/detail_faq"
     static faq_delete = "faq/delete"

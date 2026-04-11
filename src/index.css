@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,6 +13,13 @@ li { cursor: pointer; }
 .img_logo_login {
   width: 30px;
   height: 30px;
+  max-width: 200px;
+  align-content: center;
+  align-items: center;
+  align-self: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .background-login {
@@ -19,6 +27,11 @@ li { cursor: pointer; }
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+}
+
+.background-sidebar {
+  background-image: url('./sidebar.jpg'); /* Relative path from the CSS file */
+  opacity: 20%;
 }
 
 .hidden-component {
@@ -51,6 +64,12 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px;
+  word-wrap:break-word;
+  word-break: break-all;
+}
+
+.table{
+  table-layout: auto;
 }
 
 HeaderBack {
@@ -64,3 +83,248 @@ HeaderBack {
 .noBorder {
   border:none !important;
 }
+
+.samping {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background: #11101d;
+  z-index: 1;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.samping.close {
+  width: 78px;
+}
+.samping .logo-details {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
+.samping .logo-details i {
+  font-size: 30px;
+  color: #fff;
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+
+}
+.samping .logo-details .logo_name {
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
+}
+.samping.close .logo-details .logo_name {
+  transition-delay: 0s;
+  opacity: 0;
+  pointer-events: none;
+  }
+.samping .nav-links {
+  height: 100%;
+  padding: 30px 0 150px 0;
+  margin-bottom: 100px;
+  overflow: auto;
+}
+.samping.close .nav-links {
+  overflow: visible;
+}
+.samping .nav-links::-webkit-scrollbar {
+  display: none;
+}
+.samping .nav-links li {
+  position: relative;
+  list-style: none;
+  transition: all 0.4s ease;
+
+}
+.samping .nav-links li:hover {
+  background: #4cae4c;
+
+}
+.samping .nav-links li .iocn-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.samping.close .nav-links li .iocn-link {
+  display: block;
+}
+.samping .nav-links li i {
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.samping .nav-links li.showMenu i.arrow {
+  transform: rotate(-180deg);
+}
+.samping.close .nav-links i.arrow {
+  display: none;
+}
+.samping .nav-links li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.samping .nav-links li a .link_name {
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  transition: all 0.4s ease;
+}
+.samping.close .nav-links li a .link_name {
+  opacity: 0;
+  pointer-events: none;
+}
+.samping .nav-links li .sub-menu {
+  padding: 6px 6px 14px 80px;
+  margin-top: -10px;
+  background: #1d1b31;
+  display: none;
+}
+.samping .nav-links li.showMenu .sub-menu {
+  display: block;
+}
+.samping .nav-links li .sub-menu a {
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 0;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+.samping .nav-links li .sub-menu a:hover {
+  opacity: 1;
+}
+.samping.close .nav-links li .sub-menu {
+  position: absolute;
+  left: 100%;
+  top: -10px;
+  margin-top: 0;
+  padding: 10px 20px;
+  border-radius: 0 6px 6px 0;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+  transition: 0s;
+}
+.samping.close .nav-links li:hover .sub-menu {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+}
+.samping .nav-links li .sub-menu .link_name {
+  display: none;
+}
+.samping.close .nav-links li .sub-menu .link_name {
+  font-size: 18px;
+  opacity: 1;
+  display: block;
+}
+.samping .nav-links li .sub-menu.blank {
+  opacity: 1;
+  pointer-events: auto;
+  padding: 3px 20px 6px 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+.samping .nav-links li:hover .sub-menu.blank {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.samping .profile-details {
+  position: fixed;
+  bottom: 0;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1d1b31;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+.samping.close .profile-details {
+  background: none;
+}
+.samping.close .profile-details {
+  width: 78px;
+}
+.samping .profile-details .profile-content {
+  display: flex;
+  align-items: center;
+}
+.samping .profile-details img {
+  height: 52px;
+  width: 52px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  background: #1d1b31;
+  transition: all 0.5s ease;
+}
+.samping.close .profile-details img {
+  padding: 10px;
+}
+.samping .profile-details .profile_name,
+.samping .profile-details .job {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.samping.close .profile-details i,
+.samping.close .profile-details .profile_name,
+.samping.close .profile-details .job {
+  display: none;
+}
+.samping .profile-details .job {
+  font-size: 12px;
+}
+
+/*.sidebar {*/
+/*  min-height: 1500px;*/
+/*  overflow-y: auto;*/
+/*}*/
+/*  */
+/*.sidebar nav {*/
+
+/*  min-height: 1500px;*/
+/*  overflow-y: scroll;*/
+/*}*/
+
+/*.sidebar-wrapper {*/
+
+/*  min-height: 1500px;*/
+/*  overflow-y: scroll;*/
+/*}*/
+
+/*.sidebar-wrapper ul nav {*/
+
+/*  min-height: 1500px;*/
+/*  overflow-y: scroll;*/
+/*}*/
+
+/*.sidebar logo{*/
+/*  position: fixed;*/
+/*}*/
+
+.kamuflase {
+  visibility: hidden;
+}
+
+

@@ -54,7 +54,7 @@ function PrivateRoute({ children, ...rest }) {
 
 ReactDOM.render(
   <React.StrictMode>
-        <Router basename="/JMCareReact">
+        <Router basename="/JMCareAdmin">
             <Switch>
                 <Route exact path="/">
                     <Login/>

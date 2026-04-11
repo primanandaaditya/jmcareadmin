@@ -4,6 +4,8 @@ import Loading from "../../component/Loading/001/Loading";
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Endpoint from "../../helper/Endpoint";
+import Sidebar from "../../component/Sidebar";
+import Footer from "../../component/Footer";
 
 export default function Home() {
 

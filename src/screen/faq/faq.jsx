@@ -7,6 +7,8 @@ import Konstan from "../../helper/Konstan";
 import Rute from "../../helper/Rute";
 import {Link} from "react-router-dom";
 import base64 from "react-native-base64";
+import Sidebar from "../../component/Sidebar";
+import Footer from "../../component/Footer";
 
 export default function FAQ(){
     const [loading, setLoading] = useState(false);
@@ -86,7 +88,7 @@ export default function FAQ(){
         })
     }
 
-    return(
+    return (
         <div>
             <ContentWrapper title='FAQ'>
                 <div className="navbar-form navbar-right" role="search">
@@ -151,17 +153,17 @@ export default function FAQ(){
                                                         className="btn btn-danger btn-simple">
                                                         <i className="material-icons">close</i>
                                                     </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    </tbody>
+                                </table>
                             </div>
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
-            </ContentWrapper>
-        </div>
-    )
+            </div>
+        </ContentWrapper>
+    </div>
+)
 }

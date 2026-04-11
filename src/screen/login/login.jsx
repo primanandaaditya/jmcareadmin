@@ -1,14 +1,10 @@
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useForm} from "react-hook-form";
-import axios from "axios";
-import Endpoint from "../../helper/Endpoint";
 import Konstan from "../../helper/Konstan";
 import Rute from "../../helper/Rute";
 import logo from "../../asset/gambar/logo_jmpmfi.png"
 import backgroundlogin from "../../asset/gambar/login.jpg"
-import Sidebar from "../../component/Sidebar";
-
 
 export default function Login(){
 
@@ -16,7 +12,7 @@ export default function Login(){
     const history = useHistory()
     const [paramlogin,setParamlogin] = useState({})
     const [loading,setLoading] = useState(false)
-    const {register, handleSubmit, errors}= useForm();
+    const {register, handleSubmit,formState: { errors } }= useForm();
 
     const toggleTipe = () => {
         if (tipe === "password"){
@@ -27,11 +23,15 @@ export default function Login(){
     }
 
     const doLogin = data => {
-        if (data.nama === 'admin' && data.sandi === 'nimda'){
-            localStorage.setItem(Konstan.KEY_ISLOGIN, Konstan.KEY_LOGIN_SUKSES)
-            history.push(Rute.home)
+        if (data.nama === '' && data.sandi === '' ){
+            alert("Username dan password harus diisi")
         }else{
-            alert("Login salah")
+            if (data.nama === 'admin' && data.sandi === 'nimda'){
+                localStorage.setItem(Konstan.KEY_ISLOGIN, Konstan.KEY_LOGIN_SUKSES)
+                history.push(Rute.home)
+            }else{
+                alert("Login salah")
+            }
         }
     }
 
@@ -47,7 +47,7 @@ export default function Login(){
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="http://www.jaccs-mpmfinance.com">JACCS MPM Finance</a>
+                        <a className="navbar-brand" href="http://www.jaccs-mpmfinance.com">JMCARE ADMIN</a>
                     </div>
                     <div className="collapse navbar-collapse">
 
@@ -62,25 +62,28 @@ export default function Login(){
                                 <div className="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
                                     <form id="form" onSubmit={handleSubmit(doLogin)}>
                                         <div className="card card-login">
-
-                                            <div className="card-header text-center" data-background-color="green">
-                                                <h5 className="card-title">LOGIN</h5>
-                                            </div>
-
+                                            {/*<div className="card-header text-center" data-background-color="green">*/}
+                                            {/*    <h5 className="card-title">LOGIN</h5>*/}
+                                            {/*</div>*/}
                                             <div className="card-content">
+                                                <br/>
+                                                <br/>
                                                 <img className="img_logo_login" src={logo}/>
                                                 <br/>
-                                                <br/>
-                                                <hr/>
+
                                                 <div className="input-group">
                                                     <span className="input-group-addon">
                                                         <i className="material-icons">face</i>
                                                     </span>
                                                     <div className="form-group label-floating">
                                                         <label className="control-label">NRK</label>
-                                                        <input {...register("nama", {required: true})} type="text"
+                                                        <input {...register("nama", {required: 'Isilah NRK dengan benar'})}
+                                                               type="text"
                                                                className="form-control"/>
+                                                        <div className="text-danger markdown">{errors.nama &&
+                                                            <p>{errors.nama.message}</p>}</div>
                                                     </div>
+
                                                 </div>
                                                 <div className="input-group">
                                                     <span onClick={() => toggleTipe()} className="input-group-addon">
@@ -88,18 +91,17 @@ export default function Login(){
                                                     </span>
                                                     <div className="form-group label-floating">
                                                         <label className="control-label">Password</label>
-                                                        <input {...register("sandi", {required: true})} type={tipe}
+                                                        <input {...register("sandi", {required: 'Isi password dengan benar'})} type={tipe}
                                                                className="form-control"/>
+                                                        <div className="text-danger markdown">{errors.sandi &&
+                                                            <p>{errors.sandi.message}</p>}</div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div className="footer text-center">
                                                 { loading ? <p>Loading...</p> :
                                                 <button type="submit" className="btn btn-success">Submit</button>}
                                             </div>
-
                                         </div>
                                     </form>
                                 </div>
